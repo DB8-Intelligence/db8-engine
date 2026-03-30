@@ -1,0 +1,232 @@
+{
+  "name": "DB8 Imob — Follow-up Automático",
+  "active": true,
+  "nodes": [
+    {
+      "id": "cron-followup",
+      "name": "Todo dia 9h (seg-sab)",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.1,
+      "position": [240, 400],
+      "parameters": {
+        "rule": { "interval": [{ "field": "cronExpression", "expression": "0 12 * * 1-6" }] }
+      },
+      "notes": "9h horário de Brasília (UTC-3 = 12h UTC)"
+    },
+    {
+      "id": "buscar-leads",
+      "name": "Supabase DB8 Imob — Leads sem resposta 24h",
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [460, 400],
+      "parameters": {
+        "authentication": "serviceAccount",
+        "operation": "getAll",
+        "tableId": "leads",
+        "returnAll": true,
+        "filterType": "manual",
+        "filters": {
+          "conditions": [
+            { "keyName": "status",        "keyValue": "primeiro_contato",                      "condition": "eq" },
+            { "keyName": "ultimo_contato", "keyValue": "={{ $now.minus({hours:24}).toISO() }}", "condition": "lte" }
+          ]
+        },
+        "select": "id,nome,telefone,imovel_interesse,status,score"
+      },
+      "credentials": { "supabaseApi": { "id": "supabase-db8imob", "name": "Supabase DB8 IMOBILIARIA" } }
+    },
+    {
+      "id": "tem-leads",
+      "name": "Tem leads para follow-up?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [680, 400],
+      "parameters": {
+        "conditions": {
+          "conditions": [{
+            "id": "has-leads",
+            "leftValue": "={{ $json.length }}",
+            "rightValue": 0,
+            "operator": { "type": "number", "operation": "gt" }
+          }],
+          "combinator": "and"
+        }
+      }
+    },
+    {
+      "id": "split-leads",
+      "name": "Para cada Lead",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [900, 300],
+      "parameters": { "fieldToSplitOut": "data", "include": "allOtherFields", "options": {} }
+    },
+    {
+      "id": "contar-followups",
+      "name": "Supabase DB8 Imob — Contar follow-ups",
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [1120, 300],
+      "parameters": {
+        "authentication": "serviceAccount",
+        "operation": "getAll",
+        "tableId": "lead_followups",
+        "returnAll": true,
+        "filterType": "manual",
+        "filters": {
+          "conditions": [
+            { "keyName": "lead_id", "keyValue": "={{ $json.id }}", "condition": "eq" },
+            { "keyName": "canal",   "keyValue": "whatsapp",        "condition": "eq" }
+          ]
+        },
+        "select": "id"
+      },
+      "credentials": { "supabaseApi": { "id": "supabase-db8imob", "name": "Supabase DB8 IMOBILIARIA" } }
+    },
+    {
+      "id": "checar-limite",
+      "name": "Menos de 3 tentativas?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [1340, 300],
+      "parameters": {
+        "conditions": {
+          "conditions": [{
+            "id": "under-limit",
+            "leftValue": "={{ $json.length }}",
+            "rightValue": 3,
+            "operator": { "type": "number", "operation": "lt" }
+          }],
+          "combinator": "and"
+        }
+      }
+    },
+    {
+      "id": "gerar-followup",
+      "name": "DB8 Engine — Gerar mensagem follow-up",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [1560, 200],
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $env.DB8_AGENT_URL }}/ai/imob/followup",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            { "name": "x-webhook-token", "value": "={{ $env.DB8_WEBHOOK_TOKEN }}" }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "json",
+        "body": "={\n  \"nome\": \"{{ $('Para cada Lead').item.json.nome }}\",\n  \"imovel\": \"{{ $('Para cada Lead').item.json.imovel_interesse }}\",\n  \"status\": \"{{ $('Para cada Lead').item.json.status }}\",\n  \"tentativa\": {{ $('Supabase DB8 Imob — Contar follow-ups').all().length + 1 }}\n}",
+        "options": { "timeout": 20000 }
+      }
+    },
+    {
+      "id": "enviar-whatsapp",
+      "name": "DB8 Agent — Enviar WhatsApp",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [1780, 200],
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $env.DB8_AGENT_URL }}/webhook/whatsapp",
+        "sendBody": true,
+        "contentType": "json",
+        "body": "={\n  \"to\": \"{{ $('Para cada Lead').item.json.telefone }}\",\n  \"message\": {{ JSON.stringify($json.message || 'Olá! Douglas Bonanza aqui. Ainda tem interesse no imóvel? 📲 (71) 99973-3883') }}\n}",
+        "options": {}
+      }
+    },
+    {
+      "id": "registrar-followup",
+      "name": "Supabase DB8 Imob — Registrar follow-up",
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [2000, 200],
+      "parameters": {
+        "authentication": "serviceAccount",
+        "operation": "create",
+        "tableId": "lead_followups",
+        "dataToSend": "defineBelow",
+        "fieldsUi": {
+          "fieldValues": [
+            { "fieldId": "lead_id",  "fieldValue": "={{ $('Para cada Lead').item.json.id }}" },
+            { "fieldId": "mensagem", "fieldValue": "={{ $('DB8 Engine — Gerar mensagem follow-up').item.json.message }}" },
+            { "fieldId": "canal",    "fieldValue": "whatsapp" }
+          ]
+        }
+      },
+      "credentials": { "supabaseApi": { "id": "supabase-db8imob", "name": "Supabase DB8 IMOBILIARIA" } }
+    },
+    {
+      "id": "atualizar-contato",
+      "name": "Supabase DB8 Imob — Atualizar ultimo_contato",
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [2220, 200],
+      "parameters": {
+        "authentication": "serviceAccount",
+        "operation": "update",
+        "tableId": "leads",
+        "filterType": "manual",
+        "matchType": "allFilters",
+        "filters": {
+          "conditions": [
+            { "keyName": "id", "keyValue": "={{ $('Para cada Lead').item.json.id }}", "condition": "eq" }
+          ]
+        },
+        "dataToSend": "defineBelow",
+        "fieldsUi": {
+          "fieldValues": [
+            { "fieldId": "ultimo_contato",  "fieldValue": "={{ $now.toISO() }}" },
+            { "fieldId": "ultimo_followup", "fieldValue": "={{ $('DB8 Engine — Gerar mensagem follow-up').item.json.message }}" }
+          ]
+        }
+      },
+      "credentials": { "supabaseApi": { "id": "supabase-db8imob", "name": "Supabase DB8 IMOBILIARIA" } }
+    },
+    {
+      "id": "marcar-frio",
+      "name": "Supabase DB8 Imob — Marcar score frio",
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [1560, 420],
+      "parameters": {
+        "authentication": "serviceAccount",
+        "operation": "update",
+        "tableId": "leads",
+        "filterType": "manual",
+        "matchType": "allFilters",
+        "filters": {
+          "conditions": [
+            { "keyName": "id", "keyValue": "={{ $('Para cada Lead').item.json.id }}", "condition": "eq" }
+          ]
+        },
+        "dataToSend": "defineBelow",
+        "fieldsUi": {
+          "fieldValues": [
+            { "fieldId": "score", "fieldValue": "frio" }
+          ]
+        }
+      },
+      "credentials": { "supabaseApi": { "id": "supabase-db8imob", "name": "Supabase DB8 IMOBILIARIA" } }
+    }
+  ],
+  "connections": {
+    "Todo dia 9h (seg-sab)":                        { "main": [[{ "node": "Supabase DB8 Imob — Leads sem resposta 24h", "type": "main", "index": 0 }]] },
+    "Supabase DB8 Imob — Leads sem resposta 24h":   { "main": [[{ "node": "Tem leads para follow-up?", "type": "main", "index": 0 }]] },
+    "Tem leads para follow-up?":                    { "main": [[{ "node": "Para cada Lead", "type": "main", "index": 0 }], []] },
+    "Para cada Lead":                               { "main": [[{ "node": "Supabase DB8 Imob — Contar follow-ups", "type": "main", "index": 0 }]] },
+    "Supabase DB8 Imob — Contar follow-ups":        { "main": [[{ "node": "Menos de 3 tentativas?", "type": "main", "index": 0 }]] },
+    "Menos de 3 tentativas?":                       { "main": [
+      [{ "node": "DB8 Engine — Gerar mensagem follow-up", "type": "main", "index": 0 }],
+      [{ "node": "Supabase DB8 Imob — Marcar score frio", "type": "main", "index": 0 }]
+    ]},
+    "DB8 Engine — Gerar mensagem follow-up":        { "main": [[{ "node": "DB8 Agent — Enviar WhatsApp", "type": "main", "index": 0 }]] },
+    "DB8 Agent — Enviar WhatsApp":                  { "main": [[{ "node": "Supabase DB8 Imob — Registrar follow-up", "type": "main", "index": 0 }]] },
+    "Supabase DB8 Imob — Registrar follow-up":      { "main": [[{ "node": "Supabase DB8 Imob — Atualizar ultimo_contato", "type": "main", "index": 0 }]] }
+  },
+  "settings": { "executionOrder": "v1" },
+  "tags": ["imóveis", "follow-up", "whatsapp"],
+  "notes": "Requer credencial n8n: Supabase DB8 IMOBILIARIA (xhfiyukhjzwhqbacuyxq)\nEnv: DB8_AGENT_URL, DB8_WEBHOOK_TOKEN, DB8_ENGINE_URL"
+}

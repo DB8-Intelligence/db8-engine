@@ -1,0 +1,167 @@
+{
+  "name": "DB8 Imob — Relatório Semanal",
+  "active": true,
+  "nodes": [
+    {
+      "id": "cron-relatorio",
+      "name": "Sexta às 17h (Brasília)",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.1,
+      "position": [240, 400],
+      "parameters": {
+        "rule": { "interval": [{ "field": "cronExpression", "expression": "0 20 * * 5" }] }
+      }
+    },
+    {
+      "id": "leads-novos",
+      "name": "Supabase DB8 — Leads novos da semana",
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [460, 200],
+      "parameters": {
+        "authentication": "serviceAccount",
+        "operation": "getAll",
+        "tableId": "leads",
+        "returnAll": true,
+        "filterType": "manual",
+        "filters": {
+          "conditions": [
+            { "keyName": "created_at", "keyValue": "={{ $now.minus({days:7}).toISO() }}", "condition": "gte" }
+          ]
+        },
+        "select": "id,nome,origem,score,status,imovel_interesse,bairro,created_at"
+      },
+      "credentials": { "supabaseApi": { "id": "supabase-db8imob", "name": "Supabase DB8 IMOBILIARIA" } }
+    },
+    {
+      "id": "leads-avancados",
+      "name": "Supabase DB8 — Funil avançado na semana",
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [460, 380],
+      "parameters": {
+        "authentication": "serviceAccount",
+        "operation": "getAll",
+        "tableId": "leads",
+        "returnAll": true,
+        "filterType": "manual",
+        "filters": {
+          "conditions": [
+            { "keyName": "updated_at", "keyValue": "={{ $now.minus({days:7}).toISO() }}", "condition": "gte" },
+            { "keyName": "status",     "keyValue": "novo",                               "condition": "neq" }
+          ]
+        },
+        "select": "id,nome,status,score,imovel_interesse"
+      },
+      "credentials": { "supabaseApi": { "id": "supabase-db8imob", "name": "Supabase DB8 IMOBILIARIA" } }
+    },
+    {
+      "id": "leads-quentes",
+      "name": "Supabase DB8 — Leads quentes ativos",
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [460, 560],
+      "parameters": {
+        "authentication": "serviceAccount",
+        "operation": "getAll",
+        "tableId": "leads",
+        "returnAll": true,
+        "filterType": "manual",
+        "filters": {
+          "conditions": [
+            { "keyName": "score",  "keyValue": "quente",  "condition": "eq" },
+            { "keyName": "status", "keyValue": "fechado", "condition": "neq" },
+            { "keyName": "status", "keyValue": "perdido", "condition": "neq" }
+          ]
+        },
+        "select": "id,nome,status,imovel_interesse,proxima_acao,telefone"
+      },
+      "credentials": { "supabaseApi": { "id": "supabase-db8imob", "name": "Supabase DB8 IMOBILIARIA" } }
+    },
+    {
+      "id": "posts-semana",
+      "name": "Supabase DB8 — Posts Instagram da semana",
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [460, 740],
+      "parameters": {
+        "authentication": "serviceAccount",
+        "operation": "getAll",
+        "tableId": "social_posts",
+        "returnAll": true,
+        "filterType": "manual",
+        "filters": {
+          "conditions": [
+            { "keyName": "status",       "keyValue": "publicado",                              "condition": "eq" },
+            { "keyName": "published_at", "keyValue": "={{ $now.minus({days:7}).toISO() }}", "condition": "gte" }
+          ]
+        },
+        "select": "id,caption,post_type,published_at"
+      },
+      "credentials": { "supabaseApi": { "id": "supabase-db8imob", "name": "Supabase DB8 IMOBILIARIA" } }
+    },
+    {
+      "id": "agregar",
+      "name": "Agregar dados da semana",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [700, 460],
+      "parameters": {
+        "jsCode": "const novos     = $('Supabase DB8 — Leads novos da semana').all().map(i => i.json);\nconst avancados = $('Supabase DB8 — Funil avançado na semana').all().map(i => i.json);\nconst quentes   = $('Supabase DB8 — Leads quentes ativos').all().map(i => i.json);\nconst posts     = $('Supabase DB8 — Posts Instagram da semana').all().map(i => i.json);\n\nconst porOrigem = novos.reduce((a,l) => { a[l.origem]=(a[l.origem]||0)+1; return a; }, {});\nconst porScore  = novos.reduce((a,l) => { a[l.score]=(a[l.score]||0)+1; return a; }, {});\n\nconst fechados     = avancados.filter(l => l.status==='fechado');\nconst emNegociacao = avancados.filter(l => ['negociacao','proposta'].includes(l.status));\nconst comVisita    = avancados.filter(l => ['visita_agendada','visitou'].includes(l.status));\n\nreturn [{ json: {\n  semana: new Date().toLocaleDateString('pt-BR',{weekday:'long',year:'numeric',month:'long',day:'numeric'}),\n  leads: {\n    total_novos: novos.length,\n    por_origem: porOrigem,\n    por_score: porScore,\n    detalhes: novos.slice(0,10).map(l => `${l.nome} (${l.origem}, ${l.score}${l.bairro?', '+l.bairro:''})`)\n  },\n  funil: {\n    total_avancados: avancados.length,\n    fechados: fechados.map(l => l.nome),\n    em_negociacao: emNegociacao.map(l => `${l.nome} — ${l.status}`),\n    com_visita: comVisita.map(l => `${l.nome} — ${l.status}`)\n  },\n  quentes_ativos: quentes.map(l => ({\n    nome: l.nome, status: l.status, imovel: l.imovel_interesse,\n    proxima: l.proxima_acao ? new Date(l.proxima_acao).toLocaleDateString('pt-BR') : 'sem data'\n  })),\n  instagram: {\n    posts: posts.length,\n    tipos: posts.reduce((a,p) => { a[p.post_type]=(a[p.post_type]||0)+1; return a; }, {})\n  }\n}}];"
+      }
+    },
+    {
+      "id": "gerar-relatorio",
+      "name": "DB8 Agent — Gerar relatório IA",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [940, 460],
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $env.DB8_AGENT_URL }}/ai/imob/relatorio-semanal",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            { "name": "x-webhook-token", "value": "={{ $env.DB8_WEBHOOK_TOKEN }}" }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "json",
+        "body": "={{ JSON.stringify($json) }}",
+        "options": { "timeout": 30000 }
+      }
+    },
+    {
+      "id": "enviar-douglas",
+      "name": "DB8 Agent — WhatsApp para Douglas",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [1160, 460],
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $env.DB8_AGENT_URL }}/webhook/whatsapp",
+        "sendBody": true,
+        "contentType": "json",
+        "body": "={\n  \"to\": \"{{ $env.DOUGLAS_WHATSAPP }}\",\n  \"message\": {{ JSON.stringify('📊 *RELATÓRIO SEMANAL — DB8 IMOBILIARIA*\\n' + ($json.relatorio || $json.message || 'Relatório gerado.')) }}\n}",
+        "options": {}
+      }
+    }
+  ],
+  "connections": {
+    "Sexta às 17h (Brasília)": { "main": [[
+      { "node": "Supabase DB8 — Leads novos da semana",    "type": "main", "index": 0 },
+      { "node": "Supabase DB8 — Funil avançado na semana", "type": "main", "index": 0 },
+      { "node": "Supabase DB8 — Leads quentes ativos",     "type": "main", "index": 0 },
+      { "node": "Supabase DB8 — Posts Instagram da semana","type": "main", "index": 0 }
+    ]]},
+    "Supabase DB8 — Leads novos da semana":    { "main": [[{ "node": "Agregar dados da semana", "type": "main", "index": 0 }]] },
+    "Supabase DB8 — Funil avançado na semana": { "main": [[{ "node": "Agregar dados da semana", "type": "main", "index": 0 }]] },
+    "Supabase DB8 — Leads quentes ativos":     { "main": [[{ "node": "Agregar dados da semana", "type": "main", "index": 0 }]] },
+    "Supabase DB8 — Posts Instagram da semana":{ "main": [[{ "node": "Agregar dados da semana", "type": "main", "index": 0 }]] },
+    "Agregar dados da semana":                 { "main": [[{ "node": "DB8 Agent — Gerar relatório IA", "type": "main", "index": 0 }]] },
+    "DB8 Agent — Gerar relatório IA":          { "main": [[{ "node": "DB8 Agent — WhatsApp para Douglas", "type": "main", "index": 0 }]] }
+  },
+  "settings": { "executionOrder": "v1" },
+  "tags": ["imóveis", "relatório", "semanal"],
+  "notes": "Requer credencial n8n: Supabase DB8 IMOBILIARIA (xhfiyukhjzwhqbacuyxq)\nEnv: DB8_AGENT_URL, DB8_WEBHOOK_TOKEN, DOUGLAS_WHATSAPP"
+}

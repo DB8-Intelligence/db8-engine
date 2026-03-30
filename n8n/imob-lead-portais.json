@@ -1,0 +1,93 @@
+{
+  "name": "DB8 Imob — Lead dos Portais",
+  "active": true,
+  "nodes": [
+    {
+      "id": "webhook-portal",
+      "name": "Webhook — Lead dos Portais",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [240, 400],
+      "parameters": {
+        "path": "imob-lead-portal",
+        "httpMethod": "POST",
+        "responseMode": "responseNode",
+        "options": {}
+      }
+    },
+    {
+      "id": "validar-telefone",
+      "name": "Tem telefone?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [460, 400],
+      "parameters": {
+        "conditions": {
+          "conditions": [{
+            "id": "has-phone",
+            "leftValue": "={{ $json.body?.phone || $json.body?.telefone || $json.body?.celular || $json.body?.whatsapp || '' }}",
+            "rightValue": "",
+            "operator": { "type": "string", "operation": "notEmpty" }
+          }],
+          "combinator": "and"
+        }
+      }
+    },
+    {
+      "id": "enviar-para-api",
+      "name": "DB8 Engine — Registrar Lead",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [680, 300],
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $env.DB8_ENGINE_URL }}/api/webhook/portais",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            { "name": "x-webhook-token", "value": "={{ $env.DB8_WEBHOOK_TOKEN }}" }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "json",
+        "body": "={{ JSON.stringify($('Webhook — Lead dos Portais').item.json.body) }}",
+        "options": { "timeout": 30000 }
+      }
+    },
+    {
+      "id": "responder-ok",
+      "name": "Responder OK",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [900, 300],
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify({ ok: true, lead_id: $json.lead_id }) }}",
+        "options": { "responseCode": 200 }
+      }
+    },
+    {
+      "id": "responder-erro",
+      "name": "Responder Erro (sem telefone)",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [680, 500],
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "{\"error\": \"telefone obrigatório\"}",
+        "options": { "responseCode": 400 }
+      }
+    }
+  ],
+  "connections": {
+    "Webhook — Lead dos Portais": { "main": [[{ "node": "Tem telefone?", "type": "main", "index": 0 }]] },
+    "Tem telefone?": { "main": [
+      [{ "node": "DB8 Engine — Registrar Lead", "type": "main", "index": 0 }],
+      [{ "node": "Responder Erro (sem telefone)", "type": "main", "index": 0 }]
+    ]},
+    "DB8 Engine — Registrar Lead": { "main": [[{ "node": "Responder OK", "type": "main", "index": 0 }]] }
+  },
+  "settings": { "executionOrder": "v1" },
+  "tags": ["imóveis", "leads", "portais"],
+  "notes": "Webhook: https://automacao.db8intelligence.com.br/webhook/imob-lead-portal\nConfigure nos portais: ZAP Imóveis, Viva Real, OLX\nRequer env: DB8_ENGINE_URL, DB8_WEBHOOK_TOKEN"
+}
