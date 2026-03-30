@@ -10,7 +10,7 @@ from typing import Dict, Any, Optional
 from app.models.publish import PublishRecord, PublishChannel, PublishStatus
 from app.models.property import PropertyStatus
 from app.schemas.publish import PublishRequest
-from app.storage.memory_db import publish_db, properties_db
+from app.storage.supabase_db import publish_db, properties_db
 from app.core.logging import get_logger
 
 logger = get_logger(__name__)

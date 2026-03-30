@@ -2,7 +2,7 @@ from typing import List, Optional, Dict, Any
 from datetime import datetime
 from app.models.property import Property, PropertyStatus
 from app.schemas.property import PropertyCreate, PropertyUpdate
-from app.storage.memory_db import properties_db
+from app.storage.supabase_db import properties_db
 from app.services.ai_service import generate_property_caption
 from app.core.logging import get_logger
 

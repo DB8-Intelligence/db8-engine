@@ -1,7 +1,7 @@
 from typing import List, Optional, Dict, Any
 from app.models.template import Template
 from app.schemas.template import TemplateCreate, TemplateUpdate
-from app.storage.memory_db import templates_db
+from app.storage.supabase_db import templates_db
 from app.core.logging import get_logger
 
 logger = get_logger(__name__)
