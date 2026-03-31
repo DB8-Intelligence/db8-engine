@@ -6,6 +6,17 @@ from app.models.property import PropertyStatus, PropertySource
 class PropertyCreate(BaseModel):
     title: str
     description: str
+
+    # Detalhes do imóvel
+    property_type: Optional[str] = None
+    property_standard: Optional[str] = None
+    state: Optional[str] = None
+    city: Optional[str] = None
+    neighborhood: Optional[str] = None
+    investment_value: Optional[float] = None
+    built_area_m2: Optional[float] = None
+    highlights: Optional[str] = None
+
     images: List[str] = []
     sender_phone: Optional[str] = None
     source: PropertySource = PropertySource.manual
@@ -16,10 +27,24 @@ class PropertyCreate(BaseModel):
 class PropertyUpdate(BaseModel):
     title: Optional[str] = None
     description: Optional[str] = None
+
+    # Detalhes do imóvel
+    property_type: Optional[str] = None
+    property_standard: Optional[str] = None
+    state: Optional[str] = None
+    city: Optional[str] = None
+    neighborhood: Optional[str] = None
+    investment_value: Optional[float] = None
+    built_area_m2: Optional[float] = None
+    highlights: Optional[str] = None
+
+    # IA
     caption_ai: Optional[str] = None
     title_ai: Optional[str] = None
     cta: Optional[str] = None
     hashtags: Optional[List[str]] = None
+
+    images: Optional[List[str]] = None
     status: Optional[PropertyStatus] = None
     template_id: Optional[str] = None
 
@@ -28,10 +53,23 @@ class PropertyResponse(BaseModel):
     id: str
     title: str
     description: str
+
+    # Detalhes do imóvel
+    property_type: Optional[str]
+    property_standard: Optional[str]
+    state: Optional[str]
+    city: Optional[str]
+    neighborhood: Optional[str]
+    investment_value: Optional[float]
+    built_area_m2: Optional[float]
+    highlights: Optional[str]
+
+    # IA
     caption_ai: Optional[str]
     title_ai: Optional[str]
     cta: Optional[str]
     hashtags: List[str]
+
     images: List[str]
     sender_phone: Optional[str]
     source: str
