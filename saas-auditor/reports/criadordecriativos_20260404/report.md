@@ -1,15 +1,16 @@
 # SaaS Audit Report: criadordecriativos
 
-**Scan Date:** 2026-04-04T02:03:50.210Z
-**Total Features Found:** 13
-**Categories:** 7
+**Scan Date:** 2026-04-04T02:08:27.849Z
+**Total Features Found:** 16
+**Categories:** 8
 
 ## Index
 
 - [ai_assistant](#ai_assistant) (3)
 - [automation](#automation) (1)
-- [export](#export) (1)
-- [image_generation](#image_generation) (5)
+- [export](#export) (2)
+- [image_editing](#image_editing) (1)
+- [image_generation](#image_generation) (6)
 - [integration](#integration) (1)
 - [template_gallery](#template_gallery) (1)
 - [video_generation](#video_generation) (1)
@@ -86,7 +87,20 @@
 
 | Name | Confidence | Description | URL |
 |------|-----------|-------------|-----|
+| Download e Exportação de Criativos | 0.92 | Sistema de download dos criativos gerados. Botão 'Download' com menu (três pontos) para opções adici | [link](https://criadordecriativos.app/app/generate-creatives#download) |
 | Histórico de Criações | 0.8 | Tela de histórico que exibe todas as criações anteriores do usuário com preview visual. Permite revi | [link](https://criadordecriativos.app/historico) |
+
+### Download e Exportação de Criativos
+
+- **Category:** export
+- **Confidence:** 0.92
+- **URL:** https://criadordecriativos.app/app/generate-creatives#download
+- **Menu Path:** app > criar-criativo > download
+- **Description:** Sistema de download dos criativos gerados. Botão 'Download' com menu (três pontos) para opções adicionais. Arquivos nomeados automaticamente com formato e timestamp (ex: criativo-square-1775268032831.png, criativo-fourToFive-1775266157879.png, criativo-stories-1775266155905.png). Campo de texto com título copiável para uso em posts.
+- **Inputs:** Seleção de criativo para download
+- **Outputs:** Arquivos PNG em alta resolução (1.2-1.4MB), Texto do título copiável
+- **Limitations:** Formato PNG apenas (baseado nos nomes dos arquivos)
+- **Notes:** Downloads simultâneos de todos os formatos. Nomes padronizados: criativo-{formato}-{timestamp}.png. Formato detectado: square, fourToFive, stories. Ícone de copiar ao lado do título para facilitar uso em legendas de posts.
 
 ### Histórico de Criações
 
@@ -102,11 +116,32 @@
 
 ---
 
+## image_editing
+
+| Name | Confidence | Description | URL |
+|------|-----------|-------------|-----|
+| Tela de Resultados e Pós-Edição | 0.95 | Tela de entrega dos criativos gerados com ferramentas de pós-edição. Exibe 'Suas imagens estão pront | [link](https://criadordecriativos.app/app/generate-creatives#resultados) |
+
+### Tela de Resultados e Pós-Edição
+
+- **Category:** image_editing
+- **Confidence:** 0.95
+- **URL:** https://criadordecriativos.app/app/generate-creatives#resultados
+- **Menu Path:** app > criar-criativo > resultados
+- **Description:** Tela de entrega dos criativos gerados com ferramentas de pós-edição. Exibe 'Suas imagens estão prontas!' com todos os formatos gerados organizados por seção (Tamanhos horizontais). Cada formato identificado (ex: 'Quadrado (Instagram) - Perfeito para Instagram e Facebook'). Toolbar com: 'Ajustar elementos ✨' (edição pós-geração), 'Criar nova imagem', 'Outra versão', 'Trocar Tema', 'Voltar ao formulário (manter dados)', 'Editar título/preço/CTA', 'Ver variações salvas'.
+- **Inputs:** Criativo gerado
+- **Outputs:** Criativo editado/ajustado, Nova versão, Variação com outro tema
+- **Limitations:** Edição limitada a elementos (não é editor completo como Canva)
+- **Notes:** Permite ajustar elementos pós-geração sem recomeçar. 'Voltar ao formulário (manter dados)' preserva inputs para nova geração. Sistema de variações salvas para comparação. Cada formato tem composição visual DIFERENTE - não é simples crop/resize, a IA gera layouts distintos por formato.
+
+---
+
 ## image_generation
 
 | Name | Confidence | Description | URL |
 |------|-----------|-------------|-----|
 | Gerador de Criativos (Formulário Wizard) | 0.98 | Ferramenta principal de criação de criativos publicitários em 2 etapas. Etapa 1 (Foto): seleção de f | [link](https://criadordecriativos.app/app/generate-creatives) |
+| Multi-Formato com Composição Inteligente por IA | 0.97 | Sistema de geração multi-formato que cria composições visuais DISTINTAS para cada formato. Não é sim | [link](https://criadordecriativos.app/app/generate-creatives#multi-formato) |
 | Pipeline de Renderização com Otimização de Conversão | 0.92 | Pipeline de geração de criativos com 5 etapas visuais e otimização automática para conversão. Tela ' | [link](https://criadordecriativos.app/app/generate-creatives#rendering) |
 | Criar Sequência / Carrossel | 0.9 | Ferramenta para criar sequências de imagens em formato carrossel, otimizadas para engajamento em red | [link](https://criadordecriativos.app/app/generate-carousel-images) |
 | Criar Thumbnail YouTube | 0.9 | Ferramenta dedicada para criação de thumbnails otimizadas para vídeos do YouTube. Acessível pelo car | [link](https://criadordecriativos.app/app/generate-thumbnail-image) |
@@ -123,6 +158,18 @@
 - **Outputs:** Criativos publicitários em múltiplos formatos, Imagens otimizadas para redes sociais
 - **Limitations:** Máximo 3 formatos simultâneos, 1 crédito por geração, máx 3 imagens de produto, máx 4 logos
 - **Notes:** Modo Formulário: wizard step-by-step com 2 etapas. Logo pode ser posicionado (Inf. Dir.) com controle de opacidade (15%-100%). Suporta salvar logos para reutilização ('Meus logos salvos'). Ao selecionar tema com IA: 'A IA vai criar o texto do seu anúncio com base no estilo escolhido ✨'. Botão 'Avançar para o texto' leva à etapa 2.
+
+### Multi-Formato com Composição Inteligente por IA
+
+- **Category:** image_generation
+- **Confidence:** 0.97
+- **URL:** https://criadordecriativos.app/app/generate-creatives#multi-formato
+- **Menu Path:** app > criar-criativo > formatos
+- **Description:** Sistema de geração multi-formato que cria composições visuais DISTINTAS para cada formato. Não é simples crop - cada formato recebe layout, tipografia e composição diferentes. Formatos: Quadrado 1:1 (composição premium com elementos 3D dourados, texto em destaque), Feed 4:5 (tema dark/gold com ícones de serviços, fundo gradiente), Stories 9:16 (vertical com 2 CTAs 'Compartilhar Afeto Agora' + 'SAIBA MAIS', layout expandido). A IA também gera elementos gráficos contextuais (orelhas de coelho douradas, fitas, cenouras 3D para Páscoa).
+- **Inputs:** Foto do produto/pessoa, Copy (título, subtítulo, CTA), Tema selecionado, Formatos escolhidos
+- **Outputs:** Criativo Quadrado 1:1 (~1.4MB PNG), Criativo Feed 4:5 (~1.2MB PNG), Criativo Stories 9:16 (~1.2MB PNG), Criativo Paisagem 16:9
+- **Limitations:** Máximo 3 formatos simultâneos por 1 crédito
+- **Notes:** Qualidade profissional impressionante. Cada formato tem: layout distinto, tipografia adaptada, hierarquia visual diferente, elementos gráficos reposicionados. Elementos 3D gerados por IA contextualmente (Páscoa = coelhos dourados, fitas azuis). Tamanhos de arquivo indicam alta resolução (~1.2-1.4MB por imagem PNG).
 
 ### Pipeline de Renderização com Otimização de Conversão
 

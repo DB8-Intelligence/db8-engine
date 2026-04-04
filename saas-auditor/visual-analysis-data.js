@@ -81,6 +81,45 @@ export const enrichedFeatures = [
     evidence: "screenshot_temas_completo.png"
   },
   {
+    name: "Tela de Resultados e Pós-Edição",
+    category: "image_editing",
+    description: "Tela de entrega dos criativos gerados com ferramentas de pós-edição. Exibe 'Suas imagens estão prontas!' com todos os formatos gerados organizados por seção (Tamanhos horizontais). Cada formato identificado (ex: 'Quadrado (Instagram) - Perfeito para Instagram e Facebook'). Toolbar com: 'Ajustar elementos ✨' (edição pós-geração), 'Criar nova imagem', 'Outra versão', 'Trocar Tema', 'Voltar ao formulário (manter dados)', 'Editar título/preço/CTA', 'Ver variações salvas'.",
+    inputs: ["Criativo gerado"],
+    outputs: ["Criativo editado/ajustado", "Nova versão", "Variação com outro tema"],
+    menu_path: ["app", "criar-criativo", "resultados"],
+    limitations: "Edição limitada a elementos (não é editor completo como Canva)",
+    notes: "Permite ajustar elementos pós-geração sem recomeçar. 'Voltar ao formulário (manter dados)' preserva inputs para nova geração. Sistema de variações salvas para comparação. Cada formato tem composição visual DIFERENTE - não é simples crop/resize, a IA gera layouts distintos por formato.",
+    confidence: 0.95,
+    url: "https://criadordecriativos.app/app/generate-creatives#resultados",
+    evidence: "screenshot_resultados.png"
+  },
+  {
+    name: "Multi-Formato com Composição Inteligente por IA",
+    category: "image_generation",
+    description: "Sistema de geração multi-formato que cria composições visuais DISTINTAS para cada formato. Não é simples crop - cada formato recebe layout, tipografia e composição diferentes. Formatos: Quadrado 1:1 (composição premium com elementos 3D dourados, texto em destaque), Feed 4:5 (tema dark/gold com ícones de serviços, fundo gradiente), Stories 9:16 (vertical com 2 CTAs 'Compartilhar Afeto Agora' + 'SAIBA MAIS', layout expandido). A IA também gera elementos gráficos contextuais (orelhas de coelho douradas, fitas, cenouras 3D para Páscoa).",
+    inputs: ["Foto do produto/pessoa", "Copy (título, subtítulo, CTA)", "Tema selecionado", "Formatos escolhidos"],
+    outputs: ["Criativo Quadrado 1:1 (~1.4MB PNG)", "Criativo Feed 4:5 (~1.2MB PNG)", "Criativo Stories 9:16 (~1.2MB PNG)", "Criativo Paisagem 16:9"],
+    menu_path: ["app", "criar-criativo", "formatos"],
+    limitations: "Máximo 3 formatos simultâneos por 1 crédito",
+    notes: "Qualidade profissional impressionante. Cada formato tem: layout distinto, tipografia adaptada, hierarquia visual diferente, elementos gráficos reposicionados. Elementos 3D gerados por IA contextualmente (Páscoa = coelhos dourados, fitas azuis). Tamanhos de arquivo indicam alta resolução (~1.2-1.4MB por imagem PNG).",
+    confidence: 0.97,
+    url: "https://criadordecriativos.app/app/generate-creatives#multi-formato",
+    evidence: "screenshot_formatos_gerados.png"
+  },
+  {
+    name: "Download e Exportação de Criativos",
+    category: "export",
+    description: "Sistema de download dos criativos gerados. Botão 'Download' com menu (três pontos) para opções adicionais. Arquivos nomeados automaticamente com formato e timestamp (ex: criativo-square-1775268032831.png, criativo-fourToFive-1775266157879.png, criativo-stories-1775266155905.png). Campo de texto com título copiável para uso em posts.",
+    inputs: ["Seleção de criativo para download"],
+    outputs: ["Arquivos PNG em alta resolução (1.2-1.4MB)", "Texto do título copiável"],
+    menu_path: ["app", "criar-criativo", "download"],
+    limitations: "Formato PNG apenas (baseado nos nomes dos arquivos)",
+    notes: "Downloads simultâneos de todos os formatos. Nomes padronizados: criativo-{formato}-{timestamp}.png. Formato detectado: square, fourToFive, stories. Ícone de copiar ao lado do título para facilitar uso em legendas de posts.",
+    confidence: 0.92,
+    url: "https://criadordecriativos.app/app/generate-creatives#download",
+    evidence: "screenshot_download.png"
+  },
+  {
     name: "Criar Sequência / Carrossel",
     category: "image_generation",
     description: "Ferramenta para criar sequências de imagens em formato carrossel, otimizadas para engajamento em redes sociais (Instagram, Facebook). Acessível pelo card 'Criar Sequência - Carrosséis que engajam' no dashboard.",
