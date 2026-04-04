@@ -1,13 +1,56 @@
 # SaaS Audit Report: criadordecriativos
 
-**Scan Date:** 2026-04-04T01:42:26.096Z
-**Total Features Found:** 6
-**Categories:** 2
+**Scan Date:** 2026-04-04T01:58:55.654Z
+**Total Features Found:** 8
+**Categories:** 5
 
 ## Index
 
-- [image_generation](#image_generation) (5)
+- [ai_assistant](#ai_assistant) (1)
+- [export](#export) (1)
+- [image_generation](#image_generation) (4)
+- [template_gallery](#template_gallery) (1)
 - [video_generation](#video_generation) (1)
+
+---
+
+## ai_assistant
+
+| Name | Confidence | Description | URL |
+|------|-----------|-------------|-----|
+| Dashboard Principal | 0.95 | Painel principal com saudação personalizada ('Olá, Douglas!') e 4 ações rápidas: Criar Criativo, Cri | [link](https://criadordecriativos.app/app) |
+
+### Dashboard Principal
+
+- **Category:** ai_assistant
+- **Confidence:** 0.95
+- **URL:** https://criadordecriativos.app/app
+- **Menu Path:** home
+- **Description:** Painel principal com saudação personalizada ('Olá, Douglas!') e 4 ações rápidas: Criar Criativo, Criar Sequência, Criar Thumbnail e Animar Criativo. Exibe créditos disponíveis (33), seção 'Últimas Criações' com histórico visual, notificações, suporte e perfil do usuário.
+- **Inputs:** Seleção de tipo de criação
+- **Outputs:** Navegação para ferramenta selecionada, Visualização de criações recentes
+- **Limitations:** Sistema baseado em créditos - cada geração consome créditos
+- **Notes:** Sidebar com 8 ícones de navegação: Home, Criar Criativo, Sequências, Vídeo/Animação, Histórico, Recargas, Perfil, Logout. Design moderno com UI limpa e cores azul/roxo.
+
+---
+
+## export
+
+| Name | Confidence | Description | URL |
+|------|-----------|-------------|-----|
+| Histórico de Criações | 0.8 | Tela de histórico que exibe todas as criações anteriores do usuário com preview visual. Permite revi | [link](https://criadordecriativos.app/historico) |
+
+### Histórico de Criações
+
+- **Category:** export
+- **Confidence:** 0.8
+- **URL:** https://criadordecriativos.app/historico
+- **Menu Path:** historico
+- **Description:** Tela de histórico que exibe todas as criações anteriores do usuário com preview visual. Permite revisitar, baixar e reutilizar criativos gerados anteriormente.
+- **Inputs:** Filtros de busca/data
+- **Outputs:** Lista de criações anteriores, Download de criativos
+- **Limitations:** Detalhes de filtros não visíveis nos screenshots
+- **Notes:** Ícone de relógio/histórico no sidebar. Seção 'Últimas Criações' no dashboard mostra preview rápido.
 
 ---
 
@@ -15,23 +58,46 @@
 
 | Name | Confidence | Description | URL |
 |------|-----------|-------------|-----|
-| Criador de Criativos - Plataforma Completa de Geração de Conteúdo com IA | 0.95 | Plataforma SaaS brasileira que utiliza IA para criar automaticamente criativos profissionais para an | [link](https://criadordecriativos.app/app) |
-| Gerador de Imagens Criativas | 0.75 | Ferramenta de geração de imagens criativas para uso em marketing e vendas, com foco em criativos par | [link](https://criadordecriativos.app/app/generate-creative-images) |
-| Gerador de Criativos | 0.75 | Ferramenta principal para geração de criativos publicitários. Baseado nos botões visíveis, parece fo | [link](https://criadordecriativos.app/app/generate-creatives) |
-| Gerador de Thumbnail/Imagem de Capa | 0.7 | Ferramenta para geração de imagens de thumbnail, provavelmente para vídeos do YouTube, redes sociais | [link](https://criadordecriativos.app/app/generate-thumbnail-image) |
-| Gerador de Imagens para Carrossel | 0.7 | Ferramenta de geração de imagens otimizadas para formato carrossel, provavelmente para uso em redes  | [link](https://criadordecriativos.app/app/generate-carousel-images) |
+| Gerador de Criativos (Formulário) | 0.98 | Ferramenta principal de criação de criativos publicitários em 2 etapas. Etapa 1 (Foto): seleção de f | [link](https://criadordecriativos.app/app/generate-creatives) |
+| Criar Sequência / Carrossel | 0.9 | Ferramenta para criar sequências de imagens em formato carrossel, otimizadas para engajamento em red | [link](https://criadordecriativos.app/app/generate-carousel-images) |
+| Criar Thumbnail YouTube | 0.9 | Ferramenta dedicada para criação de thumbnails otimizadas para vídeos do YouTube. Acessível pelo car | [link](https://criadordecriativos.app/app/generate-thumbnail-image) |
+| Gerador de Imagens Criativas | 0.75 | Ferramenta para geração de imagens criativas focadas em marketing e vendas, particularmente para Wha | [link](https://criadordecriativos.app/app/generate-creative-images) |
 
-### Criador de Criativos - Plataforma Completa de Geração de Conteúdo com IA
+### Gerador de Criativos (Formulário)
 
 - **Category:** image_generation
-- **Confidence:** 0.95
-- **URL:** https://criadordecriativos.app/app
-- **Menu Path:** app > Criar > Criativos Profissionais | Thumbnails YouTube | Carrosséis Instagram | Vídeos
-- **Description:** Plataforma SaaS brasileira que utiliza IA para criar automaticamente criativos profissionais para anúncios, thumbnails para YouTube, carrosséis para Instagram e vídeos. O sistema oferece templates otimizados para conversão em múltiplos formatos (Feed 1:1, Feed 4:5, Stories 9:16) e permite animação de criativos estáticos em vídeos de até 10 segundos.
-- **Inputs:** Imagens do usuário, Seleção de template (16+ estilos profissionais), Configurações de animação para vídeo, Formato de saída desejado (feed, stories, carousel), Informações de cadastro (nome, email, telefone, profissão, motivo de uso, mercado/segmento)
-- **Outputs:** Criativos profissionais para Meta/Instagram em 3 formatos, Thumbnails otimizadas para YouTube, Carrosséis para Instagram, Vídeos animados de até 10 segundos, Efeitos de áudio gerados por IA, Arquivos PNG para download
-- **Limitations:** Sistema baseado em créditos - usuários precisam comprar créditos para gerar conteúdo. Créditos nunca expiram. Versão gratuita oferece apenas 1 criação. Usuários sem créditos são bloqueados de criar. Vídeos limitados a 10 segundos. Marca d'água presente em planos não ilimitados.
-- **Notes:** Plataforma monetizada via Kiwify com pagamento PIX instantâneo. Oferece bônus de +5 créditos na primeira compra. Possui painel administrativo completo para gerenciamento de usuários com filtros por origem (Meta Ads, Google Ads, Direto), nível de créditos e status de pagamento. Integração com rastreamento de conversões Google Ads (AW-17057010846, AW-1005048071). Utiliza Supabase/PostgreSQL como backend. Possui assistente IA integrado e sistema de suporte por chat. Ofertas especiais e upsells configurados. Sistema de histórico de criações e recargas disponível.
+- **Confidence:** 0.98
+- **URL:** https://criadordecriativos.app/app/generate-creatives
+- **Menu Path:** app > criar-criativo
+- **Description:** Ferramenta principal de criação de criativos publicitários em 2 etapas. Etapa 1 (Foto): seleção de formato (Quadrado 1:1, Feed 4:5, Stories 9:16, Paisagem 16:9 - máx. 3 simultâneos), quantidade (1 ou 5 criativos), upload de imagem do produto. Possui modo 'Assistente IA' e 'Formulário'. Custo: 1 crédito por até 3 formatos.
+- **Inputs:** Formato do criativo (1:1, 4:5, 9:16, 16:9), Quantidade (1 ou 5), Imagem do produto, Logo (PNG/SVG/WEBP, máx 5MB, até 4 logos), Identidade visual personalizada (toggle)
+- **Outputs:** Criativos publicitários em múltiplos formatos, Imagens otimizadas para redes sociais
+- **Limitations:** Máximo 3 formatos simultâneos, 1 crédito por geração, máx 3 imagens de produto, máx 4 logos
+- **Notes:** Dois modos de criação: Assistente IA (conversacional) e Formulário (wizard step-by-step). Logo pode ser posicionado (Inf. Dir.) com controle de opacidade (15%-100%). Suporta salvar logos para reutilização.
+
+### Criar Sequência / Carrossel
+
+- **Category:** image_generation
+- **Confidence:** 0.9
+- **URL:** https://criadordecriativos.app/app/generate-carousel-images
+- **Menu Path:** app > criar-sequencia
+- **Description:** Ferramenta para criar sequências de imagens em formato carrossel, otimizadas para engajamento em redes sociais (Instagram, Facebook). Acessível pelo card 'Criar Sequência - Carrosséis que engajam' no dashboard.
+- **Inputs:** Imagens, Textos, Tema/template
+- **Outputs:** Sequência de imagens para carrossel
+- **Limitations:** Detalhes específicos do formulário não visíveis nos screenshots
+- **Notes:** Ícone dedicado no sidebar (camadas). Foco em 'carrosséis que engajam' sugere otimização para algoritmos de redes sociais.
+
+### Criar Thumbnail YouTube
+
+- **Category:** image_generation
+- **Confidence:** 0.9
+- **URL:** https://criadordecriativos.app/app/generate-thumbnail-image
+- **Menu Path:** app > criar-thumbnail
+- **Description:** Ferramenta dedicada para criação de thumbnails otimizadas para vídeos do YouTube. Acessível pelo card 'Criar Thumbnail - Para seus vídeos do YouTube' no dashboard.
+- **Inputs:** Imagem base, Texto/título, Estilo visual
+- **Outputs:** Thumbnail otimizada para YouTube
+- **Limitations:** Detalhes específicos do formulário não visíveis nos screenshots
+- **Notes:** Ícone laranja/vermelho no dashboard. YouTube é o foco principal desta ferramenta.
 
 ### Gerador de Imagens Criativas
 
@@ -39,47 +105,31 @@
 - **Confidence:** 0.75
 - **URL:** https://criadordecriativos.app/app/generate-creative-images
 - **Menu Path:** app > generate-creative-images
-- **Description:** Ferramenta de geração de imagens criativas para uso em marketing e vendas, com foco em criativos para WhatsApp e vendas. Permite criar imagens publicitárias otimizadas para diferentes canais.
-- **Inputs:** Tipo de criativo (ex: WhatsApp), Objetivo do criativo (ex: vender mais), Texto/mensagem do anúncio
-- **Outputs:** Imagens criativas para anúncios, Criativos otimizados para WhatsApp, Imagens para campanhas de vendas
-- **Limitations:** Página carregou parcialmente - detalhes completos dos inputs não visíveis. Parece ser um SPA que requer interação para revelar todos os campos.
-- **Notes:** Relacionado a outras features de geração (thumbnail, carousel, vídeo). Possui integração com API específica 'generate-creative-images'. Interface chamada 'DesignApplication' sugere editor visual. Botões indicam foco em criativos para WhatsApp e vendas.
+- **Description:** Ferramenta para geração de imagens criativas focadas em marketing e vendas, particularmente para WhatsApp e canais de vendas diretas.
+- **Inputs:** Imagem do produto, Configurações de design, Tema
+- **Outputs:** Imagens criativas otimizadas para marketing
+- **Limitations:** Baseado em créditos
+- **Notes:** Diferente do 'Criar Criativo' principal - foco específico em imagens para canais de vendas.
 
-### Gerador de Criativos
+---
 
-- **Category:** image_generation
-- **Confidence:** 0.75
-- **URL:** https://criadordecriativos.app/app/generate-creatives
-- **Menu Path:** app > generate-creatives
-- **Description:** Ferramenta principal para geração de criativos publicitários. Baseado nos botões visíveis, parece focado em criar materiais de marketing para WhatsApp e vendas, possivelmente gerando imagens promocionais com chamadas para ação de telefone/WhatsApp.
-- **Inputs:** seleção de tipo de criativo (ex: WhatsApp), objetivo do criativo (ex: vender mais)
-- **Outputs:** imagens criativas para anúncios, materiais de marketing para WhatsApp
-- **Limitations:** Página carregou com conteúdo limitado (SPA), detalhes completos dos inputs não visíveis
-- **Notes:** Esta parece ser a feature central do produto baseado no nome da aplicação. Os botões 'Telefone (WhatsApp)' e 'Para vender mais por WhatsApp' sugerem templates ou presets focados em marketing via WhatsApp. Relacionado à UI 'DesignApplication' indica um editor visual. API própria identificada: generate-creatives
+## template_gallery
 
-### Gerador de Thumbnail/Imagem de Capa
+| Name | Confidence | Description | URL |
+|------|-----------|-------------|-----|
+| Galeria de Temas/Templates (70+) | 0.95 | Biblioteca com mais de 70 temas de design para criativos, organizados por categorias: TOP Temas, Nov | [link](https://criadordecriativos.app/app/generate-creatives#temas) |
 
-- **Category:** image_generation
-- **Confidence:** 0.7
-- **URL:** https://criadordecriativos.app/app/generate-thumbnail-image
-- **Menu Path:** app > generate-thumbnail-image
-- **Description:** Ferramenta para geração de imagens de thumbnail, provavelmente para vídeos do YouTube, redes sociais ou conteúdo digital. A página parece estar em estado inicial de carregamento ou requer interação para revelar o formulário completo.
-- **Inputs:** Não foi possível identificar campos de entrada - página pode estar em carregamento SPA
-- **Outputs:** Imagem de thumbnail gerada por IA
-- **Limitations:** Página não carregou completamente durante a análise - campos de entrada não visíveis. Botões visíveis parecem ser relacionados a WhatsApp/vendas, possivelmente elementos de suporte ou marketing.
-- **Notes:** Esta é uma das features principais do SaaS conforme indicado na lista de features (generate-thumbnail-image). A rota está dentro do /app indicando área autenticada. Os botões de WhatsApp visíveis podem ser widgets de suporte ao cliente. O contexto do bundle confirma que existe uma UI 'DesignApplication' associada a esta feature. Seria necessário interação adicional ou autenticação para ver o formulário completo de geração.
+### Galeria de Temas/Templates (70+)
 
-### Gerador de Imagens para Carrossel
-
-- **Category:** image_generation
-- **Confidence:** 0.7
-- **URL:** https://criadordecriativos.app/app/generate-carousel-images
-- **Menu Path:** app > generate-carousel-images
-- **Description:** Ferramenta de geração de imagens otimizadas para formato carrossel, provavelmente para uso em redes sociais como Instagram ou anúncios. A página parece ter foco em vendas via WhatsApp, sugerindo que os carrosséis são voltados para marketing e conversão.
-- **Inputs:** Texto ou tema do carrossel (presumido), Configurações de design (presumido), Número de slides do carrossel (presumido)
-- **Outputs:** Conjunto de imagens em formato carrossel, Imagens otimizadas para redes sociais
-- **Limitations:** Página carregou com conteúdo limitado - pode ser uma SPA que requer autenticação completa para exibir a interface. Detalhes específicos das funcionalidades não visíveis.
-- **Notes:** Relacionado a outras features de geração de imagens (thumbnail, creative-images). A presença de botões 'Telefone (WhatsApp)' e 'Para vender mais por WhatsApp' indica foco em marketing para vendas via WhatsApp. Faz parte do componente DesignApplication. A API específica 'generate-carousel-images' confirma que é uma feature distinta de geração.
+- **Category:** template_gallery
+- **Confidence:** 0.95
+- **URL:** https://criadordecriativos.app/app/generate-creatives#temas
+- **Menu Path:** app > criar-criativo > temas
+- **Description:** Biblioteca com mais de 70 temas de design para criativos, organizados por categorias: TOP Temas, Novos, Todos, Favoritos, Imobiliário, Vendas e mais. Inclui temas com IA (IA Mágico, IA Imobiliário, IA Express) e temas especializados por nicho e estilo visual.
+- **Inputs:** Seleção de tema, Filtro por categoria
+- **Outputs:** Template aplicado ao criativo
+- **Limitations:** Alguns temas podem ser exclusivos de planos premium
+- **Notes:** Temas com IA identificados: IA Mágico ('otimiza automaticamente cores, composição'), IA Imobiliário ('campanha conceitual visualmente poderosa'), IA Express ('campanha conceitual de alta conversão' - Recomendado). Sistema de favoritos (coração). Temas incluem: Conversão Extrema, CTR Monstro, Disparo de Vendas, Ímã de Leads, Campanhas com Promoções, Fechamento Garantido, Oferta Relâmpago, Minimalista Premium, Neon Futurista, Preto e Amarelo, Produto em Destaque, Dark Premium, Expert Photoshop (Glass Morphism), Imobiliário Top, Apple Style, Cinematográfico Premium, Estilo Luxo, Tecnologia, Publicitária Premium, Estilo Cinemático, Bold Impacto, Wow Tema, Orange Black, Forest Bold.
 
 ---
 
@@ -87,19 +137,19 @@
 
 | Name | Confidence | Description | URL |
 |------|-----------|-------------|-----|
-| Gerador de Vídeo | 0.75 | Ferramenta de geração de vídeos com IA, aparentemente focada em criar conteúdo para vendas via Whats | [link](https://criadordecriativos.app/app/generate-video) |
+| Animar Criativo (Vídeo) | 0.9 | Ferramenta para transformar criativos estáticos em vídeos animados. Acessível pelo card 'Animar Cria | [link](https://criadordecriativos.app/app/generate-video) |
 
-### Gerador de Vídeo
+### Animar Criativo (Vídeo)
 
 - **Category:** video_generation
-- **Confidence:** 0.75
+- **Confidence:** 0.9
 - **URL:** https://criadordecriativos.app/app/generate-video
-- **Menu Path:** app > generate-video
-- **Description:** Ferramenta de geração de vídeos com IA, aparentemente focada em criar conteúdo para vendas via WhatsApp. Permite criar vídeos criativos para campanhas de marketing e vendas.
-- **Inputs:** Telefone (WhatsApp), Informações do produto/serviço para vender
-- **Outputs:** Vídeo criativo para WhatsApp, Vídeo de vendas
-- **Limitations:** Detalhes específicos não visíveis na página capturada. Interface parece estar em carregamento ou requer autenticação completa.
-- **Notes:** A página indica foco em vendas por WhatsApp com botões 'Telefone (WhatsApp)' e 'Para vender mais por WhatsApp'. Faz parte de um conjunto de ferramentas que inclui geração de thumbnails, carrosséis, áudio e imagens criativas. A rota está associada à API 'generate-video' e UI 'DesignApplication'.
+- **Menu Path:** app > animar-criativo
+- **Description:** Ferramenta para transformar criativos estáticos em vídeos animados. Acessível pelo card 'Animar Criativo - Transforme em vídeo' no dashboard.
+- **Inputs:** Criativo estático (imagem), Configurações de animação
+- **Outputs:** Vídeo animado do criativo
+- **Limitations:** Detalhes sobre duração e formatos de vídeo não visíveis nos screenshots
+- **Notes:** Ícone roxo/magenta no dashboard. Converte imagens estáticas em vídeo, provavelmente com efeitos de movimento/transição. Ícone de play no sidebar sugere seção dedicada.
 
 ---
 

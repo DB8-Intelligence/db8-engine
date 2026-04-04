@@ -1,0 +1,135 @@
+// Manually enriched analysis data based on real screenshots of the logged-in app
+// This replaces the bundle-only analysis with actual visual observations
+
+export const enrichedFeatures = [
+  {
+    name: "Dashboard Principal",
+    category: "ai_assistant",
+    description: "Painel principal com saudação personalizada ('Olá, Douglas!') e 4 ações rápidas: Criar Criativo, Criar Sequência, Criar Thumbnail e Animar Criativo. Exibe créditos disponíveis (33), seção 'Últimas Criações' com histórico visual, notificações, suporte e perfil do usuário.",
+    inputs: ["Seleção de tipo de criação"],
+    outputs: ["Navegação para ferramenta selecionada", "Visualização de criações recentes"],
+    menu_path: ["home"],
+    limitations: "Sistema baseado em créditos - cada geração consome créditos",
+    notes: "Sidebar com 8 ícones de navegação: Home, Criar Criativo, Sequências, Vídeo/Animação, Histórico, Recargas, Perfil, Logout. Design moderno com UI limpa e cores azul/roxo.",
+    confidence: 0.95,
+    url: "https://criadordecriativos.app/app",
+    evidence: "screenshot_dashboard.png"
+  },
+  {
+    name: "Gerador de Criativos (Formulário)",
+    category: "image_generation",
+    description: "Ferramenta principal de criação de criativos publicitários em 2 etapas. Etapa 1 (Foto): seleção de formato (Quadrado 1:1, Feed 4:5, Stories 9:16, Paisagem 16:9 - máx. 3 simultâneos), quantidade (1 ou 5 criativos), upload de imagem do produto. Possui modo 'Assistente IA' e 'Formulário'. Custo: 1 crédito por até 3 formatos.",
+    inputs: ["Formato do criativo (1:1, 4:5, 9:16, 16:9)", "Quantidade (1 ou 5)", "Imagem do produto", "Logo (PNG/SVG/WEBP, máx 5MB, até 4 logos)", "Identidade visual personalizada (toggle)"],
+    outputs: ["Criativos publicitários em múltiplos formatos", "Imagens otimizadas para redes sociais"],
+    menu_path: ["app", "criar-criativo"],
+    limitations: "Máximo 3 formatos simultâneos, 1 crédito por geração, máx 3 imagens de produto, máx 4 logos",
+    notes: "Dois modos de criação: Assistente IA (conversacional) e Formulário (wizard step-by-step). Logo pode ser posicionado (Inf. Dir.) com controle de opacidade (15%-100%). Suporta salvar logos para reutilização.",
+    confidence: 0.98,
+    url: "https://criadordecriativos.app/app/generate-creatives",
+    evidence: "screenshot_criar_criativo.png"
+  },
+  {
+    name: "Assistente IA para Criação",
+    category: "ai_assistant",
+    description: "Modo alternativo de criação via assistente de IA conversacional. Acessível pelo toggle 'Assistente IA' no topo da página de criação de criativos, como alternativa ao formulário wizard.",
+    inputs: ["Instruções em linguagem natural", "Preferências de design"],
+    outputs: ["Criativos gerados via conversa com IA"],
+    menu_path: ["app", "criar-criativo", "assistente-ia"],
+    limitations: "Detalhes do fluxo conversacional não visíveis nos screenshots",
+    notes: "Integrado diretamente na tela de criação, não é uma ferramenta separada. Provavelmente usa LLM para interpretar pedidos do usuário.",
+    confidence: 0.80,
+    url: "https://criadordecriativos.app/app/generate-creatives",
+    evidence: "screenshot_assistente_ia.png"
+  },
+  {
+    name: "Galeria de Temas/Templates (70+)",
+    category: "template_gallery",
+    description: "Biblioteca com mais de 70 temas de design para criativos, organizados por categorias: TOP Temas, Novos, Todos, Favoritos, Imobiliário, Vendas e mais. Inclui temas com IA (IA Mágico, IA Imobiliário, IA Express) e temas especializados por nicho e estilo visual.",
+    inputs: ["Seleção de tema", "Filtro por categoria"],
+    outputs: ["Template aplicado ao criativo"],
+    menu_path: ["app", "criar-criativo", "temas"],
+    limitations: "Alguns temas podem ser exclusivos de planos premium",
+    notes: "Temas com IA identificados: IA Mágico ('otimiza automaticamente cores, composição'), IA Imobiliário ('campanha conceitual visualmente poderosa'), IA Express ('campanha conceitual de alta conversão' - Recomendado). Sistema de favoritos (coração). Temas incluem: Conversão Extrema, CTR Monstro, Disparo de Vendas, Ímã de Leads, Campanhas com Promoções, Fechamento Garantido, Oferta Relâmpago, Minimalista Premium, Neon Futurista, Preto e Amarelo, Produto em Destaque, Dark Premium, Expert Photoshop (Glass Morphism), Imobiliário Top, Apple Style, Cinematográfico Premium, Estilo Luxo, Tecnologia, Publicitária Premium, Estilo Cinemático, Bold Impacto, Wow Tema, Orange Black, Forest Bold.",
+    confidence: 0.95,
+    url: "https://criadordecriativos.app/app/generate-creatives#temas",
+    evidence: "screenshot_temas.png"
+  },
+  {
+    name: "Criar Sequência / Carrossel",
+    category: "image_generation",
+    description: "Ferramenta para criar sequências de imagens em formato carrossel, otimizadas para engajamento em redes sociais (Instagram, Facebook). Acessível pelo card 'Criar Sequência - Carrosséis que engajam' no dashboard.",
+    inputs: ["Imagens", "Textos", "Tema/template"],
+    outputs: ["Sequência de imagens para carrossel"],
+    menu_path: ["app", "criar-sequencia"],
+    limitations: "Detalhes específicos do formulário não visíveis nos screenshots",
+    notes: "Ícone dedicado no sidebar (camadas). Foco em 'carrosséis que engajam' sugere otimização para algoritmos de redes sociais.",
+    confidence: 0.90,
+    url: "https://criadordecriativos.app/app/generate-carousel-images",
+    evidence: "screenshot_dashboard.png"
+  },
+  {
+    name: "Criar Thumbnail YouTube",
+    category: "image_generation",
+    description: "Ferramenta dedicada para criação de thumbnails otimizadas para vídeos do YouTube. Acessível pelo card 'Criar Thumbnail - Para seus vídeos do YouTube' no dashboard.",
+    inputs: ["Imagem base", "Texto/título", "Estilo visual"],
+    outputs: ["Thumbnail otimizada para YouTube"],
+    menu_path: ["app", "criar-thumbnail"],
+    limitations: "Detalhes específicos do formulário não visíveis nos screenshots",
+    notes: "Ícone laranja/vermelho no dashboard. YouTube é o foco principal desta ferramenta.",
+    confidence: 0.90,
+    url: "https://criadordecriativos.app/app/generate-thumbnail-image",
+    evidence: "screenshot_dashboard.png"
+  },
+  {
+    name: "Animar Criativo (Vídeo)",
+    category: "video_generation",
+    description: "Ferramenta para transformar criativos estáticos em vídeos animados. Acessível pelo card 'Animar Criativo - Transforme em vídeo' no dashboard.",
+    inputs: ["Criativo estático (imagem)", "Configurações de animação"],
+    outputs: ["Vídeo animado do criativo"],
+    menu_path: ["app", "animar-criativo"],
+    limitations: "Detalhes sobre duração e formatos de vídeo não visíveis nos screenshots",
+    notes: "Ícone roxo/magenta no dashboard. Converte imagens estáticas em vídeo, provavelmente com efeitos de movimento/transição. Ícone de play no sidebar sugere seção dedicada.",
+    confidence: 0.90,
+    url: "https://criadordecriativos.app/app/generate-video",
+    evidence: "screenshot_dashboard.png"
+  },
+  {
+    name: "Sistema de Identidade Visual",
+    category: "automation",
+    description: "Funcionalidade para salvar e reutilizar identidade visual (logos, cores, fontes) nos criativos. Toggle 'Usar identidade visual personalizada' disponível na tela de criação. Permite salvar múltiplos logos com posição e opacidade configuráveis.",
+    inputs: ["Logos (PNG/SVG/WEBP, máx 5MB)", "Posição do logo", "Opacidade (0-100%)", "Cores e fontes da marca"],
+    outputs: ["Identidade visual aplicada automaticamente a todos os criativos"],
+    menu_path: ["app", "criar-criativo", "identidade-visual"],
+    limitations: "Máximo 4 logos por criativo",
+    notes: "Sistema de 'Meus logos salvos' para reutilização. Posicionamento configurável (ex: 'Inf. Dir.' = Inferior Direito). Controle de opacidade granular.",
+    confidence: 0.85,
+    url: "https://criadordecriativos.app/app/generate-creatives",
+    evidence: "screenshot_identidade_visual.png"
+  },
+  {
+    name: "Gerador de Imagens Criativas",
+    category: "image_generation",
+    description: "Ferramenta para geração de imagens criativas focadas em marketing e vendas, particularmente para WhatsApp e canais de vendas diretas.",
+    inputs: ["Imagem do produto", "Configurações de design", "Tema"],
+    outputs: ["Imagens criativas otimizadas para marketing"],
+    menu_path: ["app", "generate-creative-images"],
+    limitations: "Baseado em créditos",
+    notes: "Diferente do 'Criar Criativo' principal - foco específico em imagens para canais de vendas.",
+    confidence: 0.75,
+    url: "https://criadordecriativos.app/app/generate-creative-images",
+    evidence: "bundle_analysis"
+  },
+  {
+    name: "Histórico de Criações",
+    category: "export",
+    description: "Tela de histórico que exibe todas as criações anteriores do usuário com preview visual. Permite revisitar, baixar e reutilizar criativos gerados anteriormente.",
+    inputs: ["Filtros de busca/data"],
+    outputs: ["Lista de criações anteriores", "Download de criativos"],
+    menu_path: ["historico"],
+    limitations: "Detalhes de filtros não visíveis nos screenshots",
+    notes: "Ícone de relógio/histórico no sidebar. Seção 'Últimas Criações' no dashboard mostra preview rápido.",
+    confidence: 0.80,
+    url: "https://criadordecriativos.app/historico",
+    evidence: "screenshot_dashboard.png"
+  }
+];

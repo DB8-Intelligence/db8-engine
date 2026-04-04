@@ -1,17 +1,44 @@
 {
   "saas": "criadordecriativos",
-  "scan_date": "2026-04-04T01:42:26.097Z",
-  "total": 6,
+  "scan_date": "2026-04-04T01:58:55.655Z",
+  "total": 8,
   "by_category": {
-    "image_generation": 5,
+    "ai_assistant": 1,
+    "export": 1,
+    "image_generation": 4,
+    "template_gallery": 1,
     "video_generation": 1
   },
   "high_confidence_features": [
     {
-      "name": "Criador de Criativos - Plataforma Completa de Geração de Conteúdo com IA",
-      "category": "image_generation",
+      "name": "Dashboard Principal",
+      "category": "ai_assistant",
       "confidence": 0.95,
       "url": "https://criadordecriativos.app/app"
+    },
+    {
+      "name": "Histórico de Criações",
+      "category": "export",
+      "confidence": 0.8,
+      "url": "https://criadordecriativos.app/historico"
+    },
+    {
+      "name": "Gerador de Criativos (Formulário)",
+      "category": "image_generation",
+      "confidence": 0.98,
+      "url": "https://criadordecriativos.app/app/generate-creatives"
+    },
+    {
+      "name": "Criar Sequência / Carrossel",
+      "category": "image_generation",
+      "confidence": 0.9,
+      "url": "https://criadordecriativos.app/app/generate-carousel-images"
+    },
+    {
+      "name": "Criar Thumbnail YouTube",
+      "category": "image_generation",
+      "confidence": 0.9,
+      "url": "https://criadordecriativos.app/app/generate-thumbnail-image"
     },
     {
       "name": "Gerador de Imagens Criativas",
@@ -20,65 +47,53 @@
       "url": "https://criadordecriativos.app/app/generate-creative-images"
     },
     {
-      "name": "Gerador de Criativos",
-      "category": "image_generation",
-      "confidence": 0.75,
-      "url": "https://criadordecriativos.app/app/generate-creatives"
+      "name": "Galeria de Temas/Templates (70+)",
+      "category": "template_gallery",
+      "confidence": 0.95,
+      "url": "https://criadordecriativos.app/app/generate-creatives#temas"
     },
     {
-      "name": "Gerador de Thumbnail/Imagem de Capa",
-      "category": "image_generation",
-      "confidence": 0.7,
-      "url": "https://criadordecriativos.app/app/generate-thumbnail-image"
-    },
-    {
-      "name": "Gerador de Imagens para Carrossel",
-      "category": "image_generation",
-      "confidence": 0.7,
-      "url": "https://criadordecriativos.app/app/generate-carousel-images"
-    },
-    {
-      "name": "Gerador de Vídeo",
+      "name": "Animar Criativo (Vídeo)",
       "category": "video_generation",
-      "confidence": 0.75,
+      "confidence": 0.9,
       "url": "https://criadordecriativos.app/app/generate-video"
     }
   ],
   "key_ai_features": [
     {
-      "name": "Criador de Criativos - Plataforma Completa de Geração de Conteúdo com IA",
-      "category": "image_generation",
-      "description": "Plataforma SaaS brasileira que utiliza IA para criar automaticamente criativos profissionais para anúncios, thumbnails para YouTube, carrosséis para Instagram e vídeos. O sistema oferece templates otimizados para conversão em múltiplos formatos (Feed 1:1, Feed 4:5, Stories 9:16) e permite animação de criativos estáticos em vídeos de até 10 segundos.",
+      "name": "Dashboard Principal",
+      "category": "ai_assistant",
+      "description": "Painel principal com saudação personalizada ('Olá, Douglas!') e 4 ações rápidas: Criar Criativo, Criar Sequência, Criar Thumbnail e Animar Criativo. Exibe créditos disponíveis (33), seção 'Últimas Criações' com histórico visual, notificações, suporte e perfil do usuário.",
       "url": "https://criadordecriativos.app/app"
+    },
+    {
+      "name": "Gerador de Criativos (Formulário)",
+      "category": "image_generation",
+      "description": "Ferramenta principal de criação de criativos publicitários em 2 etapas. Etapa 1 (Foto): seleção de formato (Quadrado 1:1, Feed 4:5, Stories 9:16, Paisagem 16:9 - máx. 3 simultâneos), quantidade (1 ou 5 criativos), upload de imagem do produto. Possui modo 'Assistente IA' e 'Formulário'. Custo: 1 crédito por até 3 formatos.",
+      "url": "https://criadordecriativos.app/app/generate-creatives"
+    },
+    {
+      "name": "Criar Sequência / Carrossel",
+      "category": "image_generation",
+      "description": "Ferramenta para criar sequências de imagens em formato carrossel, otimizadas para engajamento em redes sociais (Instagram, Facebook). Acessível pelo card 'Criar Sequência - Carrosséis que engajam' no dashboard.",
+      "url": "https://criadordecriativos.app/app/generate-carousel-images"
+    },
+    {
+      "name": "Criar Thumbnail YouTube",
+      "category": "image_generation",
+      "description": "Ferramenta dedicada para criação de thumbnails otimizadas para vídeos do YouTube. Acessível pelo card 'Criar Thumbnail - Para seus vídeos do YouTube' no dashboard.",
+      "url": "https://criadordecriativos.app/app/generate-thumbnail-image"
     },
     {
       "name": "Gerador de Imagens Criativas",
       "category": "image_generation",
-      "description": "Ferramenta de geração de imagens criativas para uso em marketing e vendas, com foco em criativos para WhatsApp e vendas. Permite criar imagens publicitárias otimizadas para diferentes canais.",
+      "description": "Ferramenta para geração de imagens criativas focadas em marketing e vendas, particularmente para WhatsApp e canais de vendas diretas.",
       "url": "https://criadordecriativos.app/app/generate-creative-images"
     },
     {
-      "name": "Gerador de Criativos",
-      "category": "image_generation",
-      "description": "Ferramenta principal para geração de criativos publicitários. Baseado nos botões visíveis, parece focado em criar materiais de marketing para WhatsApp e vendas, possivelmente gerando imagens promocionais com chamadas para ação de telefone/WhatsApp.",
-      "url": "https://criadordecriativos.app/app/generate-creatives"
-    },
-    {
-      "name": "Gerador de Thumbnail/Imagem de Capa",
-      "category": "image_generation",
-      "description": "Ferramenta para geração de imagens de thumbnail, provavelmente para vídeos do YouTube, redes sociais ou conteúdo digital. A página parece estar em estado inicial de carregamento ou requer interação para revelar o formulário completo.",
-      "url": "https://criadordecriativos.app/app/generate-thumbnail-image"
-    },
-    {
-      "name": "Gerador de Imagens para Carrossel",
-      "category": "image_generation",
-      "description": "Ferramenta de geração de imagens otimizadas para formato carrossel, provavelmente para uso em redes sociais como Instagram ou anúncios. A página parece ter foco em vendas via WhatsApp, sugerindo que os carrosséis são voltados para marketing e conversão.",
-      "url": "https://criadordecriativos.app/app/generate-carousel-images"
-    },
-    {
-      "name": "Gerador de Vídeo",
+      "name": "Animar Criativo (Vídeo)",
       "category": "video_generation",
-      "description": "Ferramenta de geração de vídeos com IA, aparentemente focada em criar conteúdo para vendas via WhatsApp. Permite criar vídeos criativos para campanhas de marketing e vendas.",
+      "description": "Ferramenta para transformar criativos estáticos em vídeos animados. Acessível pelo card 'Animar Criativo - Transforme em vídeo' no dashboard.",
       "url": "https://criadordecriativos.app/app/generate-video"
     }
   ]
