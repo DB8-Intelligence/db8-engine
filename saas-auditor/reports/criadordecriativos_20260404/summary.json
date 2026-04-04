@@ -1,0 +1,85 @@
+{
+  "saas": "criadordecriativos",
+  "scan_date": "2026-04-04T01:42:26.097Z",
+  "total": 6,
+  "by_category": {
+    "image_generation": 5,
+    "video_generation": 1
+  },
+  "high_confidence_features": [
+    {
+      "name": "Criador de Criativos - Plataforma Completa de Geração de Conteúdo com IA",
+      "category": "image_generation",
+      "confidence": 0.95,
+      "url": "https://criadordecriativos.app/app"
+    },
+    {
+      "name": "Gerador de Imagens Criativas",
+      "category": "image_generation",
+      "confidence": 0.75,
+      "url": "https://criadordecriativos.app/app/generate-creative-images"
+    },
+    {
+      "name": "Gerador de Criativos",
+      "category": "image_generation",
+      "confidence": 0.75,
+      "url": "https://criadordecriativos.app/app/generate-creatives"
+    },
+    {
+      "name": "Gerador de Thumbnail/Imagem de Capa",
+      "category": "image_generation",
+      "confidence": 0.7,
+      "url": "https://criadordecriativos.app/app/generate-thumbnail-image"
+    },
+    {
+      "name": "Gerador de Imagens para Carrossel",
+      "category": "image_generation",
+      "confidence": 0.7,
+      "url": "https://criadordecriativos.app/app/generate-carousel-images"
+    },
+    {
+      "name": "Gerador de Vídeo",
+      "category": "video_generation",
+      "confidence": 0.75,
+      "url": "https://criadordecriativos.app/app/generate-video"
+    }
+  ],
+  "key_ai_features": [
+    {
+      "name": "Criador de Criativos - Plataforma Completa de Geração de Conteúdo com IA",
+      "category": "image_generation",
+      "description": "Plataforma SaaS brasileira que utiliza IA para criar automaticamente criativos profissionais para anúncios, thumbnails para YouTube, carrosséis para Instagram e vídeos. O sistema oferece templates otimizados para conversão em múltiplos formatos (Feed 1:1, Feed 4:5, Stories 9:16) e permite animação de criativos estáticos em vídeos de até 10 segundos.",
+      "url": "https://criadordecriativos.app/app"
+    },
+    {
+      "name": "Gerador de Imagens Criativas",
+      "category": "image_generation",
+      "description": "Ferramenta de geração de imagens criativas para uso em marketing e vendas, com foco em criativos para WhatsApp e vendas. Permite criar imagens publicitárias otimizadas para diferentes canais.",
+      "url": "https://criadordecriativos.app/app/generate-creative-images"
+    },
+    {
+      "name": "Gerador de Criativos",
+      "category": "image_generation",
+      "description": "Ferramenta principal para geração de criativos publicitários. Baseado nos botões visíveis, parece focado em criar materiais de marketing para WhatsApp e vendas, possivelmente gerando imagens promocionais com chamadas para ação de telefone/WhatsApp.",
+      "url": "https://criadordecriativos.app/app/generate-creatives"
+    },
+    {
+      "name": "Gerador de Thumbnail/Imagem de Capa",
+      "category": "image_generation",
+      "description": "Ferramenta para geração de imagens de thumbnail, provavelmente para vídeos do YouTube, redes sociais ou conteúdo digital. A página parece estar em estado inicial de carregamento ou requer interação para revelar o formulário completo.",
+      "url": "https://criadordecriativos.app/app/generate-thumbnail-image"
+    },
+    {
+      "name": "Gerador de Imagens para Carrossel",
+      "category": "image_generation",
+      "description": "Ferramenta de geração de imagens otimizadas para formato carrossel, provavelmente para uso em redes sociais como Instagram ou anúncios. A página parece ter foco em vendas via WhatsApp, sugerindo que os carrosséis são voltados para marketing e conversão.",
+      "url": "https://criadordecriativos.app/app/generate-carousel-images"
+    },
+    {
+      "name": "Gerador de Vídeo",
+      "category": "video_generation",
+      "description": "Ferramenta de geração de vídeos com IA, aparentemente focada em criar conteúdo para vendas via WhatsApp. Permite criar vídeos criativos para campanhas de marketing e vendas.",
+      "url": "https://criadordecriativos.app/app/generate-video"
+    }
+  ]
+}
