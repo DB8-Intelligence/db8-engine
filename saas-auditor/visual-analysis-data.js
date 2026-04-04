@@ -1,5 +1,5 @@
 // Manually enriched analysis data based on real screenshots of the logged-in app
-// This replaces the bundle-only analysis with actual visual observations
+// Updated with additional screenshots showing full theme gallery and AI assistant chat
 
 export const enrichedFeatures = [
   {
@@ -16,43 +16,56 @@ export const enrichedFeatures = [
     evidence: "screenshot_dashboard.png"
   },
   {
-    name: "Gerador de Criativos (Formulário)",
+    name: "Gerador de Criativos (Formulário Wizard)",
     category: "image_generation",
-    description: "Ferramenta principal de criação de criativos publicitários em 2 etapas. Etapa 1 (Foto): seleção de formato (Quadrado 1:1, Feed 4:5, Stories 9:16, Paisagem 16:9 - máx. 3 simultâneos), quantidade (1 ou 5 criativos), upload de imagem do produto. Possui modo 'Assistente IA' e 'Formulário'. Custo: 1 crédito por até 3 formatos.",
-    inputs: ["Formato do criativo (1:1, 4:5, 9:16, 16:9)", "Quantidade (1 ou 5)", "Imagem do produto", "Logo (PNG/SVG/WEBP, máx 5MB, até 4 logos)", "Identidade visual personalizada (toggle)"],
+    description: "Ferramenta principal de criação de criativos publicitários em 2 etapas. Etapa 1 (Foto): seleção de formato (Quadrado 1:1, Feed 4:5, Stories 9:16, Paisagem 16:9 - máx. 3 simultâneos), quantidade (1 ou 5 criativos), upload de imagem do produto (1-3 imagens), upload de logo com posicionamento. Etapa 2: seleção de tema visual e geração de texto por IA.",
+    inputs: ["Formato do criativo (1:1, 4:5, 9:16, 16:9)", "Quantidade (1 ou 5)", "Imagem do produto (1-3)", "Logo (PNG/SVG/WEBP, máx 5MB, até 4 logos)", "Posição e opacidade do logo", "Identidade visual personalizada (toggle)", "Tema visual", "Texto do anúncio (gerado por IA)"],
     outputs: ["Criativos publicitários em múltiplos formatos", "Imagens otimizadas para redes sociais"],
-    menu_path: ["app", "criar-criativo"],
+    menu_path: ["app", "criar-criativo", "formulario"],
     limitations: "Máximo 3 formatos simultâneos, 1 crédito por geração, máx 3 imagens de produto, máx 4 logos",
-    notes: "Dois modos de criação: Assistente IA (conversacional) e Formulário (wizard step-by-step). Logo pode ser posicionado (Inf. Dir.) com controle de opacidade (15%-100%). Suporta salvar logos para reutilização.",
+    notes: "Modo Formulário: wizard step-by-step com 2 etapas. Logo pode ser posicionado (Inf. Dir.) com controle de opacidade (15%-100%). Suporta salvar logos para reutilização ('Meus logos salvos'). Ao selecionar tema com IA: 'A IA vai criar o texto do seu anúncio com base no estilo escolhido ✨'. Botão 'Avançar para o texto' leva à etapa 2.",
     confidence: 0.98,
     url: "https://criadordecriativos.app/app/generate-creatives",
-    evidence: "screenshot_criar_criativo.png"
+    evidence: "screenshot_criar_criativo_formulario.png"
   },
   {
-    name: "Assistente IA para Criação",
+    name: "Assistente IA - Chatbot de Criação de Anúncios",
     category: "ai_assistant",
-    description: "Modo alternativo de criação via assistente de IA conversacional. Acessível pelo toggle 'Assistente IA' no topo da página de criação de criativos, como alternativa ao formulário wizard.",
-    inputs: ["Instruções em linguagem natural", "Preferências de design"],
-    outputs: ["Criativos gerados via conversa com IA"],
+    description: "Chatbot conversacional completo chamado 'IA Criador de Anúncios' que guia o usuário passo a passo na criação de criativos. Interface de chat com barra de progresso (20% ao iniciar). Fluxo: (1) IA se apresenta, (2) pede upload de 1-2 fotos do produto/serviço, (3) opção de pular e deixar a IA criar imagem do zero. Status 'Online agora' indica disponibilidade.",
+    inputs: ["Fotos do produto/serviço (1-2, JPG/PNG/WEBP)", "Instruções conversacionais em linguagem natural", "Opção de pular upload e deixar IA gerar imagem"],
+    outputs: ["Criativos publicitários gerados via conversa guiada", "Imagens criadas por IA quando sem upload"],
     menu_path: ["app", "criar-criativo", "assistente-ia"],
-    limitations: "Detalhes do fluxo conversacional não visíveis nos screenshots",
-    notes: "Integrado diretamente na tela de criação, não é uma ferramenta separada. Provavelmente usa LLM para interpretar pedidos do usuário.",
-    confidence: 0.80,
-    url: "https://criadordecriativos.app/app/generate-creatives",
-    evidence: "screenshot_assistente_ia.png"
+    limitations: "Fluxo sequencial guiado - requer seguir etapas da IA",
+    notes: "Interface de chat moderna com ícone de IA (✨). Mensagens: 'Olá! 👋 Eu sou a IA do Criador de Criativos.', 'Vou criar um anúncio profissional para você! ⚡', 'Primeiro, envie 1 ou 2 fotos do seu produto ou serviço para deixar o criativo mais profissional! 📸'. Opção 'Ou pular e deixar a IA criar imagem' sugere capacidade de image generation sem input visual. Barra de progresso indica fluxo multi-etapa.",
+    confidence: 0.95,
+    url: "https://criadordecriativos.app/app/generate-creatives#assistente-ia",
+    evidence: "screenshot_assistente_ia_chat.png"
   },
   {
-    name: "Galeria de Temas/Templates (70+)",
+    name: "Geração Automática de Texto por IA",
+    category: "ai_assistant",
+    description: "Funcionalidade de geração automática de texto publicitário baseada no tema/estilo selecionado. Ao escolher um tema (ex: IA Imobiliário), a mensagem 'A IA vai criar o texto do seu anúncio com base no estilo escolhido ✨' confirma que o copy é gerado automaticamente por IA.",
+    inputs: ["Tema/estilo selecionado", "Contexto do produto/serviço"],
+    outputs: ["Texto publicitário otimizado para o nicho selecionado"],
+    menu_path: ["app", "criar-criativo", "texto-ia"],
+    limitations: "Texto gerado depende do tema escolhido",
+    notes: "Integrado ao fluxo de criação - não é uma ferramenta standalone. A IA adapta o tom e conteúdo do texto ao nicho do tema (ex: imobiliário, vendas, beleza, etc.).",
+    confidence: 0.90,
+    url: "https://criadordecriativos.app/app/generate-creatives#texto",
+    evidence: "screenshot_ia_texto.png"
+  },
+  {
+    name: "Galeria de Temas/Templates (90+ temas)",
     category: "template_gallery",
-    description: "Biblioteca com mais de 70 temas de design para criativos, organizados por categorias: TOP Temas, Novos, Todos, Favoritos, Imobiliário, Vendas e mais. Inclui temas com IA (IA Mágico, IA Imobiliário, IA Express) e temas especializados por nicho e estilo visual.",
-    inputs: ["Seleção de tema", "Filtro por categoria"],
-    outputs: ["Template aplicado ao criativo"],
+    description: "Biblioteca massiva com mais de 90 temas de design organizados por categorias e nichos profissionais. Categorias: TOP Temas, Novos, Todos, Favoritos, Imobiliário, Vendas, Mais categorias. Inclui 3 temas com IA e dezenas de temas por nicho específico. Sistema de favoritos e recomendações.",
+    inputs: ["Seleção de tema", "Filtro por categoria/nicho"],
+    outputs: ["Template visual aplicado ao criativo", "Texto adaptado ao nicho via IA"],
     menu_path: ["app", "criar-criativo", "temas"],
-    limitations: "Alguns temas podem ser exclusivos de planos premium",
-    notes: "Temas com IA identificados: IA Mágico ('otimiza automaticamente cores, composição'), IA Imobiliário ('campanha conceitual visualmente poderosa'), IA Express ('campanha conceitual de alta conversão' - Recomendado). Sistema de favoritos (coração). Temas incluem: Conversão Extrema, CTR Monstro, Disparo de Vendas, Ímã de Leads, Campanhas com Promoções, Fechamento Garantido, Oferta Relâmpago, Minimalista Premium, Neon Futurista, Preto e Amarelo, Produto em Destaque, Dark Premium, Expert Photoshop (Glass Morphism), Imobiliário Top, Apple Style, Cinematográfico Premium, Estilo Luxo, Tecnologia, Publicitária Premium, Estilo Cinemático, Bold Impacto, Wow Tema, Orange Black, Forest Bold.",
-    confidence: 0.95,
+    limitations: "Alguns temas podem requerer plano premium",
+    notes: "TEMAS COM IA: IA Mágico ('otimiza automaticamente cores, composição'), IA Imobiliário ('campanha conceitual visualmente poderosa'), IA Express ('campanha conceitual de alta conversão' - Recomendado). TEMAS DE ESTILO: Conversão Extrema, CTR Monstro, Disparo de Vendas, Ímã de Leads, Campanhas com Promoções, Fechamento Garantido, Oferta Relâmpago, Minimalista Premium, Neon Futurista, Preto e Amarelo, Produto em Destaque, Dark Premium, Expert Photoshop (Glass Morphism), Imobiliário Top, Apple Style, Cinematográfico Premium, Estilo Luxo, Tecnologia, Publicitária Premium, Estilo Cinemático, Bold Impacto, Wow Tema, Orange Black, Forest Bold, Gradiente Vibrante, Luz e Sombra, Autoridade Expert, Storytelling Visual, Neon Verde, Duotone Dramático, Magazine Cover, Wireframe Tech, Editorial/Tipográfico. TEMAS POR NICHO: Serviços Profissionais, Restaurante Gourmet/Delivery/Pizzaria/Cafeteria, Automotivo Premium/Promoção/Seminovo/Oficina, Clínica Estética, Saúde e Bem-estar, Consultório Médico, Joalheria, Academia, Curso Online, Escola de Idiomas, Coaching, Preparatório, Advogado, Contador, Arquiteto, Fotógrafo, Salão de Beleza, Barbearia, Loja de Cosméticos, Micropigmentação, Extensão de Cílios, Nail Designer, Maquiador, Pet Shop, Veterinário, Hotel Pet, Turismo, Eventos.",
+    confidence: 0.98,
     url: "https://criadordecriativos.app/app/generate-creatives#temas",
-    evidence: "screenshot_temas.png"
+    evidence: "screenshot_temas_completo.png"
   },
   {
     name: "Criar Sequência / Carrossel",
@@ -94,30 +107,43 @@ export const enrichedFeatures = [
     evidence: "screenshot_dashboard.png"
   },
   {
-    name: "Sistema de Identidade Visual",
+    name: "Sistema de Identidade Visual / Branding",
     category: "automation",
     description: "Funcionalidade para salvar e reutilizar identidade visual (logos, cores, fontes) nos criativos. Toggle 'Usar identidade visual personalizada' disponível na tela de criação. Permite salvar múltiplos logos com posição e opacidade configuráveis.",
-    inputs: ["Logos (PNG/SVG/WEBP, máx 5MB)", "Posição do logo", "Opacidade (0-100%)", "Cores e fontes da marca"],
+    inputs: ["Logos (PNG/SVG/WEBP, máx 5MB)", "Posição do logo (ex: Inf. Dir.)", "Opacidade (0-100%)", "Cores e fontes da marca"],
     outputs: ["Identidade visual aplicada automaticamente a todos os criativos"],
     menu_path: ["app", "criar-criativo", "identidade-visual"],
     limitations: "Máximo 4 logos por criativo",
-    notes: "Sistema de 'Meus logos salvos' para reutilização. Posicionamento configurável (ex: 'Inf. Dir.' = Inferior Direito). Controle de opacidade granular.",
-    confidence: 0.85,
-    url: "https://criadordecriativos.app/app/generate-creatives",
+    notes: "Sistema de 'Meus logos salvos' para reutilização rápida. Posicionamento configurável. Controle de opacidade granular (15%-100%). Toggle para ativar/desativar identidade visual personalizada.",
+    confidence: 0.88,
+    url: "https://criadordecriativos.app/app/identidade-visual",
     evidence: "screenshot_identidade_visual.png"
   },
   {
-    name: "Gerador de Imagens Criativas",
+    name: "Gerador de Imagens Criativas (WhatsApp/Vendas)",
     category: "image_generation",
     description: "Ferramenta para geração de imagens criativas focadas em marketing e vendas, particularmente para WhatsApp e canais de vendas diretas.",
     inputs: ["Imagem do produto", "Configurações de design", "Tema"],
-    outputs: ["Imagens criativas otimizadas para marketing"],
+    outputs: ["Imagens criativas otimizadas para marketing direto"],
     menu_path: ["app", "generate-creative-images"],
     limitations: "Baseado em créditos",
-    notes: "Diferente do 'Criar Criativo' principal - foco específico em imagens para canais de vendas.",
+    notes: "Diferente do 'Criar Criativo' principal - foco específico em imagens para canais de vendas diretas (WhatsApp, etc.).",
     confidence: 0.75,
     url: "https://criadordecriativos.app/app/generate-creative-images",
     evidence: "bundle_analysis"
+  },
+  {
+    name: "Geração de Imagem por IA (sem upload)",
+    category: "image_generation",
+    description: "Capacidade de gerar imagens do zero usando IA, sem necessidade de upload de foto do produto. Disponível no fluxo do Assistente IA com a opção 'Ou pular e deixar a IA criar imagem'.",
+    inputs: ["Descrição textual ou contexto do produto/serviço"],
+    outputs: ["Imagem gerada por IA para uso no criativo"],
+    menu_path: ["app", "criar-criativo", "assistente-ia", "gerar-imagem"],
+    limitations: "Disponível apenas pelo fluxo do Assistente IA",
+    notes: "Funcionalidade de AI image generation integrada ao chatbot. Permite criar criativos mesmo sem ter fotos do produto.",
+    confidence: 0.85,
+    url: "https://criadordecriativos.app/app/generate-creatives#assistente-ia",
+    evidence: "screenshot_assistente_ia_pular.png"
   },
   {
     name: "Histórico de Criações",
@@ -127,9 +153,22 @@ export const enrichedFeatures = [
     outputs: ["Lista de criações anteriores", "Download de criativos"],
     menu_path: ["historico"],
     limitations: "Detalhes de filtros não visíveis nos screenshots",
-    notes: "Ícone de relógio/histórico no sidebar. Seção 'Últimas Criações' no dashboard mostra preview rápido.",
+    notes: "Ícone de relógio/histórico no sidebar. Seção 'Últimas Criações' no dashboard mostra preview rápido das criações mais recentes.",
     confidence: 0.80,
     url: "https://criadordecriativos.app/historico",
     evidence: "screenshot_dashboard.png"
+  },
+  {
+    name: "Sistema de Créditos e Recargas",
+    category: "integration",
+    description: "Sistema de monetização baseado em créditos. Cada geração consome créditos (1 crédito = até 3 formatos simultâneos). Exibe saldo no header (33 créditos visíveis), ícone de raio para recarga rápida, e tela dedicada de histórico de recargas.",
+    inputs: ["Pagamento/recarga"],
+    outputs: ["Créditos adicionados à conta"],
+    menu_path: ["app", "recargas"],
+    limitations: "Modelo pay-per-use - sem plano ilimitado aparente",
+    notes: "Exibido proeminentemente no header com badge '33 créditos' e barra de progresso verde. Ícone de raio (⚡) sugere recarga rápida. Rotas '/historico-recargas', '/upsell', '/welcome-offer' detectadas no bundle.",
+    confidence: 0.85,
+    url: "https://criadordecriativos.app/historico-recargas",
+    evidence: "screenshot_creditos.png"
   }
 ];

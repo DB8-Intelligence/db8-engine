@@ -1,11 +1,13 @@
 {
   "saas": "criadordecriativos",
-  "scan_date": "2026-04-04T01:58:55.655Z",
-  "total": 8,
+  "scan_date": "2026-04-04T02:01:05.715Z",
+  "total": 12,
   "by_category": {
-    "ai_assistant": 1,
+    "ai_assistant": 3,
+    "automation": 1,
     "export": 1,
     "image_generation": 4,
+    "integration": 1,
     "template_gallery": 1,
     "video_generation": 1
   },
@@ -17,13 +19,31 @@
       "url": "https://criadordecriativos.app/app"
     },
     {
+      "name": "Assistente IA - Chatbot de Criação de Anúncios",
+      "category": "ai_assistant",
+      "confidence": 0.95,
+      "url": "https://criadordecriativos.app/app/generate-creatives#assistente-ia"
+    },
+    {
+      "name": "Geração Automática de Texto por IA",
+      "category": "ai_assistant",
+      "confidence": 0.9,
+      "url": "https://criadordecriativos.app/app/generate-creatives#texto"
+    },
+    {
+      "name": "Sistema de Identidade Visual / Branding",
+      "category": "automation",
+      "confidence": 0.88,
+      "url": "https://criadordecriativos.app/app/identidade-visual"
+    },
+    {
       "name": "Histórico de Criações",
       "category": "export",
       "confidence": 0.8,
       "url": "https://criadordecriativos.app/historico"
     },
     {
-      "name": "Gerador de Criativos (Formulário)",
+      "name": "Gerador de Criativos (Formulário Wizard)",
       "category": "image_generation",
       "confidence": 0.98,
       "url": "https://criadordecriativos.app/app/generate-creatives"
@@ -41,15 +61,21 @@
       "url": "https://criadordecriativos.app/app/generate-thumbnail-image"
     },
     {
-      "name": "Gerador de Imagens Criativas",
+      "name": "Gerador de Imagens Criativas (WhatsApp/Vendas)",
       "category": "image_generation",
       "confidence": 0.75,
       "url": "https://criadordecriativos.app/app/generate-creative-images"
     },
     {
-      "name": "Galeria de Temas/Templates (70+)",
+      "name": "Sistema de Créditos e Recargas",
+      "category": "integration",
+      "confidence": 0.85,
+      "url": "https://criadordecriativos.app/historico-recargas"
+    },
+    {
+      "name": "Galeria de Temas/Templates (90+ temas)",
       "category": "template_gallery",
-      "confidence": 0.95,
+      "confidence": 0.98,
       "url": "https://criadordecriativos.app/app/generate-creatives#temas"
     },
     {
@@ -67,9 +93,21 @@
       "url": "https://criadordecriativos.app/app"
     },
     {
-      "name": "Gerador de Criativos (Formulário)",
+      "name": "Assistente IA - Chatbot de Criação de Anúncios",
+      "category": "ai_assistant",
+      "description": "Chatbot conversacional completo chamado 'IA Criador de Anúncios' que guia o usuário passo a passo na criação de criativos. Interface de chat com barra de progresso (20% ao iniciar). Fluxo: (1) IA se apresenta, (2) pede upload de 1-2 fotos do produto/serviço, (3) opção de pular e deixar a IA criar imagem do zero. Status 'Online agora' indica disponibilidade.",
+      "url": "https://criadordecriativos.app/app/generate-creatives#assistente-ia"
+    },
+    {
+      "name": "Geração Automática de Texto por IA",
+      "category": "ai_assistant",
+      "description": "Funcionalidade de geração automática de texto publicitário baseada no tema/estilo selecionado. Ao escolher um tema (ex: IA Imobiliário), a mensagem 'A IA vai criar o texto do seu anúncio com base no estilo escolhido ✨' confirma que o copy é gerado automaticamente por IA.",
+      "url": "https://criadordecriativos.app/app/generate-creatives#texto"
+    },
+    {
+      "name": "Gerador de Criativos (Formulário Wizard)",
       "category": "image_generation",
-      "description": "Ferramenta principal de criação de criativos publicitários em 2 etapas. Etapa 1 (Foto): seleção de formato (Quadrado 1:1, Feed 4:5, Stories 9:16, Paisagem 16:9 - máx. 3 simultâneos), quantidade (1 ou 5 criativos), upload de imagem do produto. Possui modo 'Assistente IA' e 'Formulário'. Custo: 1 crédito por até 3 formatos.",
+      "description": "Ferramenta principal de criação de criativos publicitários em 2 etapas. Etapa 1 (Foto): seleção de formato (Quadrado 1:1, Feed 4:5, Stories 9:16, Paisagem 16:9 - máx. 3 simultâneos), quantidade (1 ou 5 criativos), upload de imagem do produto (1-3 imagens), upload de logo com posicionamento. Etapa 2: seleção de tema visual e geração de texto por IA.",
       "url": "https://criadordecriativos.app/app/generate-creatives"
     },
     {
@@ -85,7 +123,7 @@
       "url": "https://criadordecriativos.app/app/generate-thumbnail-image"
     },
     {
-      "name": "Gerador de Imagens Criativas",
+      "name": "Gerador de Imagens Criativas (WhatsApp/Vendas)",
       "category": "image_generation",
       "description": "Ferramenta para geração de imagens criativas focadas em marketing e vendas, particularmente para WhatsApp e canais de vendas diretas.",
       "url": "https://criadordecriativos.app/app/generate-creative-images"
