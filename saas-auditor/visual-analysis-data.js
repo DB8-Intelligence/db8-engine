@@ -42,17 +42,17 @@ export const enrichedFeatures = [
     evidence: "screenshot_assistente_ia_fluxo_completo.png"
   },
   {
-    name: "Geração Automática de Copy por IA",
+    name: "Gerador de Copy Multi-Canal por IA",
     category: "ai_assistant",
-    description: "Motor de geração de texto publicitário que cria copy estruturado (Título, Subtítulo, Preço, CTA) baseado no tema selecionado e descrição do produto. Exemplo gerado: Título 'Fortaleça Vínculos Nesta Páscoa', Subtítulo 'Demonstre gratidão a quem valoriza sua história com mensagens exclusivas', CTA 'Enviar Mensagem Agora'. Oferece 3 opções pós-geração: aprovar, editar manualmente ou regenerar.",
-    inputs: ["Tema/estilo selecionado", "Descrição do produto/serviço em linguagem natural"],
-    outputs: ["Título publicitário", "Subtítulo/descrição", "Preço (opcional)", "Call-to-Action (CTA)"],
-    menu_path: ["app", "criar-criativo", "assistente-ia", "copy"],
+    description: "Motor de geração de texto publicitário com IA que cria copy em 5 formatos diferentes otimizados por canal: Curta (Stories), Média (Feed), Completa (Anúncios), WhatsApp (Mensagem), Instagram (Caption). Badge '✨ Gerado com IA' identifica conteúdo. Cada formato adapta tom, tamanho e CTA para o canal específico. Após geração do criativo visual, exibe seção 'Copy para seu anúncio - Texto persuasivo gerado com IA' com tabs por formato. Opções: 'Editar' (personalizar), 'Copiar' (clipboard), 'Gerar nova' (regenerar). Também sugere temas alternativos ('Experimente também: CTR Monstro', 'Minimalista Premium').",
+    inputs: ["Tema/estilo selecionado", "Descrição do produto/serviço", "Canal alvo (Stories/Feed/Anúncios/WhatsApp/Instagram)"],
+    outputs: ["Copy Curta para Stories", "Copy Média para Feed", "Copy Completa para Anúncios", "Copy para WhatsApp/Mensagem", "Caption para Instagram"],
+    menu_path: ["app", "criar-criativo", "resultados", "copy"],
     limitations: "Qualidade depende da descrição fornecida e tema escolhido",
-    notes: "Copy gerado é editável ('Editar manualmente') e regenerável ('Criar outra versão'). Integrado tanto no Assistente IA quanto no Formulário ('A IA vai criar o texto do seu anúncio com base no estilo escolhido ✨'). CTA é personalizado por contexto.",
-    confidence: 0.95,
+    notes: "5 formatos de copy: (1) Curta/Stories - texto breve para stories, (2) Média/Feed - texto médio para posts de feed, (3) Completa/Anúncios - texto longo persuasivo para anúncios pagos, (4) WhatsApp/Mensagem - texto conversacional para envio direto, (5) Instagram/Caption - legenda otimizada para Instagram. Cada um com botões Editar e Copiar. Sugestão de temas alternativos no rodapé. Banner de upsell: 'Aumente seus cliques com vídeos! Vídeos têm até 3x mais engajamento' → 'Animar meu criativo'. Botões extras: 'Regenerar com ajustes', 'Gerar outra versão'.",
+    confidence: 0.98,
     url: "https://criadordecriativos.app/app/generate-creatives#copy-ia",
-    evidence: "screenshot_copy_gerado.png"
+    evidence: "screenshot_copy_multicanal.png"
   },
   {
     name: "Pipeline de Renderização com Otimização de Conversão",
@@ -120,17 +120,17 @@ export const enrichedFeatures = [
     evidence: "screenshot_download.png"
   },
   {
-    name: "Criar Sequência / Carrossel",
+    name: "Criar Sequência de Imagens / Carrossel",
     category: "image_generation",
-    description: "Ferramenta para criar sequências de imagens em formato carrossel, otimizadas para engajamento em redes sociais (Instagram, Facebook). Acessível pelo card 'Criar Sequência - Carrosséis que engajam' no dashboard.",
-    inputs: ["Imagens", "Textos", "Tema/template"],
-    outputs: ["Sequência de imagens para carrossel"],
+    description: "Ferramenta completa para criar sequências de imagens (carrosséis) com wizard de 2 etapas: '1. Tamanho e Estilo' → '2. Textos das Imagens'. Configurações: formato (Quadrado, Retrato, Stories/Reels), quantidade (slider 3-10 imagens, padrão 5), tipo de conteúdo storytelling e estilo visual por nicho. Custo: 5 créditos para 5 imagens. Modo 'Foco' disponível.",
+    inputs: ["Formato (Quadrado, Retrato, Stories/Reels)", "Quantidade de imagens (3-10, slider)", "Tipo de conteúdo (5 opções de storytelling)", "Estilo visual por nicho", "Textos para cada imagem (etapa 2)"],
+    outputs: ["Sequência de 3-10 imagens para carrossel"],
     menu_path: ["app", "criar-sequencia"],
-    limitations: "Detalhes específicos do formulário não visíveis nos screenshots",
-    notes: "Ícone dedicado no sidebar (camadas). Foco em 'carrosséis que engajam' sugere otimização para algoritmos de redes sociais.",
-    confidence: 0.90,
+    limitations: "Custo proporcional: 5 créditos para 5 imagens. Máximo 10 imagens por sequência.",
+    notes: "5 tipos de conteúdo storytelling: (1) 'Chama atenção → Mostra o problema → Dá a solução' - para resolver dor do cliente, (2) 'Liste os benefícios' - vantagens uma a uma, (3) 'Antes e Depois' - transformação do produto, (4) 'Passo a Passo' - explicar como funciona de forma simples, (5) 'Curiosidade + Revelação' - criar suspense e surpreender. Estilos visuais por nicho: Narrativo, Engajamento, Vendas, Imobiliário, Restaurantes, Saúde, Automotivo. Ícone dedicado no sidebar (camadas).",
+    confidence: 0.97,
     url: "https://criadordecriativos.app/app/generate-carousel-images",
-    evidence: "screenshot_dashboard.png"
+    evidence: "screenshot_criar_sequencia.png"
   },
   {
     name: "Criar Thumbnail YouTube",

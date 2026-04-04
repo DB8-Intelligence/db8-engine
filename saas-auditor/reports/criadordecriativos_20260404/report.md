@@ -1,6 +1,6 @@
 # SaaS Audit Report: criadordecriativos
 
-**Scan Date:** 2026-04-04T02:08:27.849Z
+**Scan Date:** 2026-04-04T02:10:31.144Z
 **Total Features Found:** 16
 **Categories:** 8
 
@@ -22,8 +22,8 @@
 | Name | Confidence | Description | URL |
 |------|-----------|-------------|-----|
 | Assistente IA - Chatbot 'IA Criadora de Anúncios' | 0.99 | Chatbot conversacional completo chamado 'IA Criadora de Anúncios' com status 'Online agora' que guia | [link](https://criadordecriativos.app/app/generate-creatives#assistente-ia) |
+| Gerador de Copy Multi-Canal por IA | 0.98 | Motor de geração de texto publicitário com IA que cria copy em 5 formatos diferentes otimizados por  | [link](https://criadordecriativos.app/app/generate-creatives#copy-ia) |
 | Dashboard Principal | 0.95 | Painel principal com saudação personalizada ('Olá, Douglas!') e 4 ações rápidas: Criar Criativo, Cri | [link](https://criadordecriativos.app/app) |
-| Geração Automática de Copy por IA | 0.95 | Motor de geração de texto publicitário que cria copy estruturado (Título, Subtítulo, Preço, CTA) bas | [link](https://criadordecriativos.app/app/generate-creatives#copy-ia) |
 
 ### Assistente IA - Chatbot 'IA Criadora de Anúncios'
 
@@ -37,6 +37,18 @@
 - **Limitations:** Fluxo sequencial guiado - 5 etapas obrigatórias
 - **Notes:** Fluxo detalhado: Etapa 1 (20%): 'Envie 1 ou 2 fotos' ou 'pular e deixar a IA criar imagem'. Após upload: 'Imagem recebida! Você pode adicionar mais uma ou continuar' → '+ Adicionar mais uma' / 'Continuar assim'. Etapa 2 (60%): Seleção de tema via chips. IA confirma: 'Ótima escolha! O tema IA Express é perfeito!'. Etapa 3: 'Descreva seu produto ou serviço...' (input de texto). Etapa 4 (80%): IA gera copy estruturado com Título/Subtítulo/Preço/CTA. Pergunta: 'O que você achou?' → 3 opções: 'Gostei do texto, continuar...' / 'Editar manualmente' / 'Criar outra versão'. Etapa 5 (100%): Resumo final formatado com emojis + botão 'Gerar Criativo Profissional'.
 
+### Gerador de Copy Multi-Canal por IA
+
+- **Category:** ai_assistant
+- **Confidence:** 0.98
+- **URL:** https://criadordecriativos.app/app/generate-creatives#copy-ia
+- **Menu Path:** app > criar-criativo > resultados > copy
+- **Description:** Motor de geração de texto publicitário com IA que cria copy em 5 formatos diferentes otimizados por canal: Curta (Stories), Média (Feed), Completa (Anúncios), WhatsApp (Mensagem), Instagram (Caption). Badge '✨ Gerado com IA' identifica conteúdo. Cada formato adapta tom, tamanho e CTA para o canal específico. Após geração do criativo visual, exibe seção 'Copy para seu anúncio - Texto persuasivo gerado com IA' com tabs por formato. Opções: 'Editar' (personalizar), 'Copiar' (clipboard), 'Gerar nova' (regenerar). Também sugere temas alternativos ('Experimente também: CTR Monstro', 'Minimalista Premium').
+- **Inputs:** Tema/estilo selecionado, Descrição do produto/serviço, Canal alvo (Stories/Feed/Anúncios/WhatsApp/Instagram)
+- **Outputs:** Copy Curta para Stories, Copy Média para Feed, Copy Completa para Anúncios, Copy para WhatsApp/Mensagem, Caption para Instagram
+- **Limitations:** Qualidade depende da descrição fornecida e tema escolhido
+- **Notes:** 5 formatos de copy: (1) Curta/Stories - texto breve para stories, (2) Média/Feed - texto médio para posts de feed, (3) Completa/Anúncios - texto longo persuasivo para anúncios pagos, (4) WhatsApp/Mensagem - texto conversacional para envio direto, (5) Instagram/Caption - legenda otimizada para Instagram. Cada um com botões Editar e Copiar. Sugestão de temas alternativos no rodapé. Banner de upsell: 'Aumente seus cliques com vídeos! Vídeos têm até 3x mais engajamento' → 'Animar meu criativo'. Botões extras: 'Regenerar com ajustes', 'Gerar outra versão'.
+
 ### Dashboard Principal
 
 - **Category:** ai_assistant
@@ -48,18 +60,6 @@
 - **Outputs:** Navegação para ferramenta selecionada, Visualização de criações recentes
 - **Limitations:** Sistema baseado em créditos - cada geração consome créditos
 - **Notes:** Sidebar com 8 ícones de navegação: Home, Criar Criativo, Sequências, Vídeo/Animação, Histórico, Recargas, Perfil, Logout. Design moderno com UI limpa e cores azul/roxo.
-
-### Geração Automática de Copy por IA
-
-- **Category:** ai_assistant
-- **Confidence:** 0.95
-- **URL:** https://criadordecriativos.app/app/generate-creatives#copy-ia
-- **Menu Path:** app > criar-criativo > assistente-ia > copy
-- **Description:** Motor de geração de texto publicitário que cria copy estruturado (Título, Subtítulo, Preço, CTA) baseado no tema selecionado e descrição do produto. Exemplo gerado: Título 'Fortaleça Vínculos Nesta Páscoa', Subtítulo 'Demonstre gratidão a quem valoriza sua história com mensagens exclusivas', CTA 'Enviar Mensagem Agora'. Oferece 3 opções pós-geração: aprovar, editar manualmente ou regenerar.
-- **Inputs:** Tema/estilo selecionado, Descrição do produto/serviço em linguagem natural
-- **Outputs:** Título publicitário, Subtítulo/descrição, Preço (opcional), Call-to-Action (CTA)
-- **Limitations:** Qualidade depende da descrição fornecida e tema escolhido
-- **Notes:** Copy gerado é editável ('Editar manualmente') e regenerável ('Criar outra versão'). Integrado tanto no Assistente IA quanto no Formulário ('A IA vai criar o texto do seu anúncio com base no estilo escolhido ✨'). CTA é personalizado por contexto.
 
 ---
 
@@ -142,8 +142,8 @@
 |------|-----------|-------------|-----|
 | Gerador de Criativos (Formulário Wizard) | 0.98 | Ferramenta principal de criação de criativos publicitários em 2 etapas. Etapa 1 (Foto): seleção de f | [link](https://criadordecriativos.app/app/generate-creatives) |
 | Multi-Formato com Composição Inteligente por IA | 0.97 | Sistema de geração multi-formato que cria composições visuais DISTINTAS para cada formato. Não é sim | [link](https://criadordecriativos.app/app/generate-creatives#multi-formato) |
+| Criar Sequência de Imagens / Carrossel | 0.97 | Ferramenta completa para criar sequências de imagens (carrosséis) com wizard de 2 etapas: '1. Tamanh | [link](https://criadordecriativos.app/app/generate-carousel-images) |
 | Pipeline de Renderização com Otimização de Conversão | 0.92 | Pipeline de geração de criativos com 5 etapas visuais e otimização automática para conversão. Tela ' | [link](https://criadordecriativos.app/app/generate-creatives#rendering) |
-| Criar Sequência / Carrossel | 0.9 | Ferramenta para criar sequências de imagens em formato carrossel, otimizadas para engajamento em red | [link](https://criadordecriativos.app/app/generate-carousel-images) |
 | Criar Thumbnail YouTube | 0.9 | Ferramenta dedicada para criação de thumbnails otimizadas para vídeos do YouTube. Acessível pelo car | [link](https://criadordecriativos.app/app/generate-thumbnail-image) |
 | Gerador de Imagens Criativas (WhatsApp/Vendas) | 0.75 | Ferramenta para geração de imagens criativas focadas em marketing e vendas, particularmente para Wha | [link](https://criadordecriativos.app/app/generate-creative-images) |
 
@@ -171,6 +171,18 @@
 - **Limitations:** Máximo 3 formatos simultâneos por 1 crédito
 - **Notes:** Qualidade profissional impressionante. Cada formato tem: layout distinto, tipografia adaptada, hierarquia visual diferente, elementos gráficos reposicionados. Elementos 3D gerados por IA contextualmente (Páscoa = coelhos dourados, fitas azuis). Tamanhos de arquivo indicam alta resolução (~1.2-1.4MB por imagem PNG).
 
+### Criar Sequência de Imagens / Carrossel
+
+- **Category:** image_generation
+- **Confidence:** 0.97
+- **URL:** https://criadordecriativos.app/app/generate-carousel-images
+- **Menu Path:** app > criar-sequencia
+- **Description:** Ferramenta completa para criar sequências de imagens (carrosséis) com wizard de 2 etapas: '1. Tamanho e Estilo' → '2. Textos das Imagens'. Configurações: formato (Quadrado, Retrato, Stories/Reels), quantidade (slider 3-10 imagens, padrão 5), tipo de conteúdo storytelling e estilo visual por nicho. Custo: 5 créditos para 5 imagens. Modo 'Foco' disponível.
+- **Inputs:** Formato (Quadrado, Retrato, Stories/Reels), Quantidade de imagens (3-10, slider), Tipo de conteúdo (5 opções de storytelling), Estilo visual por nicho, Textos para cada imagem (etapa 2)
+- **Outputs:** Sequência de 3-10 imagens para carrossel
+- **Limitations:** Custo proporcional: 5 créditos para 5 imagens. Máximo 10 imagens por sequência.
+- **Notes:** 5 tipos de conteúdo storytelling: (1) 'Chama atenção → Mostra o problema → Dá a solução' - para resolver dor do cliente, (2) 'Liste os benefícios' - vantagens uma a uma, (3) 'Antes e Depois' - transformação do produto, (4) 'Passo a Passo' - explicar como funciona de forma simples, (5) 'Curiosidade + Revelação' - criar suspense e surpreender. Estilos visuais por nicho: Narrativo, Engajamento, Vendas, Imobiliário, Restaurantes, Saúde, Automotivo. Ícone dedicado no sidebar (camadas).
+
 ### Pipeline de Renderização com Otimização de Conversão
 
 - **Category:** image_generation
@@ -182,18 +194,6 @@
 - **Outputs:** Criativo profissional renderizado e otimizado para conversão
 - **Limitations:** Tempo de geração ~9-15 segundos
 - **Notes:** Pipeline de 5 steps com feedback visual em tempo real. Etapa final é 'Otimizando - Ajustes para máxima conversão' - sugere pós-processamento inteligente. Preview animado do criativo durante geração. Dica exibida: 'Teste diferentes variações para melhores resultados'. Ícone ✨ no preview sugere processamento por IA.
-
-### Criar Sequência / Carrossel
-
-- **Category:** image_generation
-- **Confidence:** 0.9
-- **URL:** https://criadordecriativos.app/app/generate-carousel-images
-- **Menu Path:** app > criar-sequencia
-- **Description:** Ferramenta para criar sequências de imagens em formato carrossel, otimizadas para engajamento em redes sociais (Instagram, Facebook). Acessível pelo card 'Criar Sequência - Carrosséis que engajam' no dashboard.
-- **Inputs:** Imagens, Textos, Tema/template
-- **Outputs:** Sequência de imagens para carrossel
-- **Limitations:** Detalhes específicos do formulário não visíveis nos screenshots
-- **Notes:** Ícone dedicado no sidebar (camadas). Foco em 'carrosséis que engajam' sugere otimização para algoritmos de redes sociais.
 
 ### Criar Thumbnail YouTube
 

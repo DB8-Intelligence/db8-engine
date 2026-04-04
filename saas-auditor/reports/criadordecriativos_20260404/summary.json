@@ -1,6 +1,6 @@
 {
   "saas": "criadordecriativos",
-  "scan_date": "2026-04-04T02:08:27.850Z",
+  "scan_date": "2026-04-04T02:10:31.145Z",
   "total": 16,
   "by_category": {
     "ai_assistant": 3,
@@ -20,16 +20,16 @@
       "url": "https://criadordecriativos.app/app/generate-creatives#assistente-ia"
     },
     {
+      "name": "Gerador de Copy Multi-Canal por IA",
+      "category": "ai_assistant",
+      "confidence": 0.98,
+      "url": "https://criadordecriativos.app/app/generate-creatives#copy-ia"
+    },
+    {
       "name": "Dashboard Principal",
       "category": "ai_assistant",
       "confidence": 0.95,
       "url": "https://criadordecriativos.app/app"
-    },
-    {
-      "name": "Geração Automática de Copy por IA",
-      "category": "ai_assistant",
-      "confidence": 0.95,
-      "url": "https://criadordecriativos.app/app/generate-creatives#copy-ia"
     },
     {
       "name": "Sistema de Identidade Visual / Branding",
@@ -68,16 +68,16 @@
       "url": "https://criadordecriativos.app/app/generate-creatives#multi-formato"
     },
     {
+      "name": "Criar Sequência de Imagens / Carrossel",
+      "category": "image_generation",
+      "confidence": 0.97,
+      "url": "https://criadordecriativos.app/app/generate-carousel-images"
+    },
+    {
       "name": "Pipeline de Renderização com Otimização de Conversão",
       "category": "image_generation",
       "confidence": 0.92,
       "url": "https://criadordecriativos.app/app/generate-creatives#rendering"
-    },
-    {
-      "name": "Criar Sequência / Carrossel",
-      "category": "image_generation",
-      "confidence": 0.9,
-      "url": "https://criadordecriativos.app/app/generate-carousel-images"
     },
     {
       "name": "Criar Thumbnail YouTube",
@@ -118,16 +118,16 @@
       "url": "https://criadordecriativos.app/app/generate-creatives#assistente-ia"
     },
     {
+      "name": "Gerador de Copy Multi-Canal por IA",
+      "category": "ai_assistant",
+      "description": "Motor de geração de texto publicitário com IA que cria copy em 5 formatos diferentes otimizados por canal: Curta (Stories), Média (Feed), Completa (Anúncios), WhatsApp (Mensagem), Instagram (Caption). Badge '✨ Gerado com IA' identifica conteúdo. Cada formato adapta tom, tamanho e CTA para o canal específico. Após geração do criativo visual, exibe seção 'Copy para seu anúncio - Texto persuasivo gerado com IA' com tabs por formato. Opções: 'Editar' (personalizar), 'Copiar' (clipboard), 'Gerar nova' (regenerar). Também sugere temas alternativos ('Experimente também: CTR Monstro', 'Minimalista Premium').",
+      "url": "https://criadordecriativos.app/app/generate-creatives#copy-ia"
+    },
+    {
       "name": "Dashboard Principal",
       "category": "ai_assistant",
       "description": "Painel principal com saudação personalizada ('Olá, Douglas!') e 4 ações rápidas: Criar Criativo, Criar Sequência, Criar Thumbnail e Animar Criativo. Exibe créditos disponíveis (33), seção 'Últimas Criações' com histórico visual, notificações, suporte e perfil do usuário.",
       "url": "https://criadordecriativos.app/app"
-    },
-    {
-      "name": "Geração Automática de Copy por IA",
-      "category": "ai_assistant",
-      "description": "Motor de geração de texto publicitário que cria copy estruturado (Título, Subtítulo, Preço, CTA) baseado no tema selecionado e descrição do produto. Exemplo gerado: Título 'Fortaleça Vínculos Nesta Páscoa', Subtítulo 'Demonstre gratidão a quem valoriza sua história com mensagens exclusivas', CTA 'Enviar Mensagem Agora'. Oferece 3 opções pós-geração: aprovar, editar manualmente ou regenerar.",
-      "url": "https://criadordecriativos.app/app/generate-creatives#copy-ia"
     },
     {
       "name": "Tela de Resultados e Pós-Edição",
@@ -148,16 +148,16 @@
       "url": "https://criadordecriativos.app/app/generate-creatives#multi-formato"
     },
     {
+      "name": "Criar Sequência de Imagens / Carrossel",
+      "category": "image_generation",
+      "description": "Ferramenta completa para criar sequências de imagens (carrosséis) com wizard de 2 etapas: '1. Tamanho e Estilo' → '2. Textos das Imagens'. Configurações: formato (Quadrado, Retrato, Stories/Reels), quantidade (slider 3-10 imagens, padrão 5), tipo de conteúdo storytelling e estilo visual por nicho. Custo: 5 créditos para 5 imagens. Modo 'Foco' disponível.",
+      "url": "https://criadordecriativos.app/app/generate-carousel-images"
+    },
+    {
       "name": "Pipeline de Renderização com Otimização de Conversão",
       "category": "image_generation",
       "description": "Pipeline de geração de criativos com 5 etapas visuais e otimização automática para conversão. Tela 'Criando sua arte' mostra: 4 etapas completas (checkmarks verdes) + etapa atual 'Otimizando - Ajustes para máxima conversão' com barra de progresso (68%, ~9s restantes). Preview do criativo sendo gerado aparece em tempo real.",
       "url": "https://criadordecriativos.app/app/generate-creatives#rendering"
-    },
-    {
-      "name": "Criar Sequência / Carrossel",
-      "category": "image_generation",
-      "description": "Ferramenta para criar sequências de imagens em formato carrossel, otimizadas para engajamento em redes sociais (Instagram, Facebook). Acessível pelo card 'Criar Sequência - Carrosséis que engajam' no dashboard.",
-      "url": "https://criadordecriativos.app/app/generate-carousel-images"
     },
     {
       "name": "Criar Thumbnail YouTube",
