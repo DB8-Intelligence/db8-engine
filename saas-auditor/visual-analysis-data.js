@@ -133,17 +133,17 @@ export const enrichedFeatures = [
     evidence: "screenshot_criar_sequencia.png"
   },
   {
-    name: "Criar Thumbnail YouTube",
+    name: "Gerador de Thumbnails YouTube com IA",
     category: "image_generation",
-    description: "Ferramenta dedicada para criação de thumbnails otimizadas para vídeos do YouTube. Acessível pelo card 'Criar Thumbnail - Para seus vídeos do YouTube' no dashboard.",
-    inputs: ["Imagem base", "Texto/título", "Estilo visual"],
-    outputs: ["Thumbnail otimizada para YouTube"],
-    menu_path: ["app", "criar-thumbnail"],
-    limitations: "Detalhes específicos do formulário não visíveis nos screenshots",
-    notes: "Ícone laranja/vermelho no dashboard. YouTube é o foco principal desta ferramenta.",
-    confidence: 0.90,
+    description: "Ferramenta completa para criar thumbnails virais para YouTube com IA. Tagline: 'Crie Thumbnails que Viralizam - Aumente seu CTR com thumbnails profissionais geradas por IA'. Layout em 2 colunas: esquerda com 10 estilos categorizados por objetivo, direita com gerador de sugestões por IA. Funcionalidade 'Deixe a IA Sugerir': descreva o conteúdo do vídeo → IA gera sugestões de títulos e subtítulos otimizados para CTR. Resultado mostra valor economizado: '45min economizados', 'Valor em agência: R$150', 'Você ganhou!'.",
+    inputs: ["Estilo visual (10 opções)", "Descrição do vídeo (para IA sugerir)", "Título Principal (máx 50 caracteres)", "Subtítulo opcional (máx 40 caracteres)", "Imagens (1, 2 ou 3)"],
+    outputs: ["Thumbnail YouTube em alta resolução", "Sugestões de título por IA", "Sugestões de subtítulo por IA"],
+    menu_path: ["app", "thumbnail-youtube"],
+    limitations: "Título máx 50 chars, subtítulo máx 40 chars",
+    notes: "10 ESTILOS com badges de objetivo: (1) Choque & Curiosidade [🔥 Viral] - expressões faciais fortes e texto de impacto, (2) Antes e Depois [📈 Alto CTR] - transformações visuais dramáticas, (3) Número em Destaque [⚡ Popular] - números grandes e chamativos, (4) Face + Emoção [👀 Engajamento] - rostos expressivos com reações, (5) Minimalista Bold [✨ Premium] - design limpo com tipografia forte, (6) Clickbait Profissional [🎯 Conversão] - elementos de urgência e exclusividade, (7) Tutorial/Educativo [📚 Autoridade] - layout organizado e informativo, (8) Gaming/Tech [🎮 Gamer] - visual futurista com efeitos neon, (9) Polêmica/Debate [⚔️ Versus] - estilo VS com cores contrastantes, (10) Urgente/Breaking [🔴 AO VIVO] - estilo notícia com selos de urgência. SUGESTÕES IA: ao descrever 'Saas ImobCreator', IA sugere títulos como 'Faturei 120K com SAAS IMOBILIARIO', 'SAAS: 157 NOVOS INVESTIDORES', 'DE ZERO A 25K/MÊS COM IMOBREATOR' e subtítulos 'LUCRO LÍQUIDO DE 92%', 'O FIM DAS IMOBILIÁRIAS'. Resultado com tipografia multi-cor (branco/dourado/verde) em composição profissional.",
+    confidence: 0.99,
     url: "https://criadordecriativos.app/app/generate-thumbnail-image",
-    evidence: "screenshot_dashboard.png"
+    evidence: "screenshot_thumbnail_youtube.png"
   },
   {
     name: "Animar Criativo (Vídeo)",

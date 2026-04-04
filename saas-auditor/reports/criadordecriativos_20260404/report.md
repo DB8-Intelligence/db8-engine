@@ -1,6 +1,6 @@
 # SaaS Audit Report: criadordecriativos
 
-**Scan Date:** 2026-04-04T02:10:31.144Z
+**Scan Date:** 2026-04-04T02:14:37.287Z
 **Total Features Found:** 16
 **Categories:** 8
 
@@ -140,12 +140,24 @@
 
 | Name | Confidence | Description | URL |
 |------|-----------|-------------|-----|
+| Gerador de Thumbnails YouTube com IA | 0.99 | Ferramenta completa para criar thumbnails virais para YouTube com IA. Tagline: 'Crie Thumbnails que  | [link](https://criadordecriativos.app/app/generate-thumbnail-image) |
 | Gerador de Criativos (Formulário Wizard) | 0.98 | Ferramenta principal de criação de criativos publicitários em 2 etapas. Etapa 1 (Foto): seleção de f | [link](https://criadordecriativos.app/app/generate-creatives) |
 | Multi-Formato com Composição Inteligente por IA | 0.97 | Sistema de geração multi-formato que cria composições visuais DISTINTAS para cada formato. Não é sim | [link](https://criadordecriativos.app/app/generate-creatives#multi-formato) |
 | Criar Sequência de Imagens / Carrossel | 0.97 | Ferramenta completa para criar sequências de imagens (carrosséis) com wizard de 2 etapas: '1. Tamanh | [link](https://criadordecriativos.app/app/generate-carousel-images) |
 | Pipeline de Renderização com Otimização de Conversão | 0.92 | Pipeline de geração de criativos com 5 etapas visuais e otimização automática para conversão. Tela ' | [link](https://criadordecriativos.app/app/generate-creatives#rendering) |
-| Criar Thumbnail YouTube | 0.9 | Ferramenta dedicada para criação de thumbnails otimizadas para vídeos do YouTube. Acessível pelo car | [link](https://criadordecriativos.app/app/generate-thumbnail-image) |
 | Gerador de Imagens Criativas (WhatsApp/Vendas) | 0.75 | Ferramenta para geração de imagens criativas focadas em marketing e vendas, particularmente para Wha | [link](https://criadordecriativos.app/app/generate-creative-images) |
+
+### Gerador de Thumbnails YouTube com IA
+
+- **Category:** image_generation
+- **Confidence:** 0.99
+- **URL:** https://criadordecriativos.app/app/generate-thumbnail-image
+- **Menu Path:** app > thumbnail-youtube
+- **Description:** Ferramenta completa para criar thumbnails virais para YouTube com IA. Tagline: 'Crie Thumbnails que Viralizam - Aumente seu CTR com thumbnails profissionais geradas por IA'. Layout em 2 colunas: esquerda com 10 estilos categorizados por objetivo, direita com gerador de sugestões por IA. Funcionalidade 'Deixe a IA Sugerir': descreva o conteúdo do vídeo → IA gera sugestões de títulos e subtítulos otimizados para CTR. Resultado mostra valor economizado: '45min economizados', 'Valor em agência: R$150', 'Você ganhou!'.
+- **Inputs:** Estilo visual (10 opções), Descrição do vídeo (para IA sugerir), Título Principal (máx 50 caracteres), Subtítulo opcional (máx 40 caracteres), Imagens (1, 2 ou 3)
+- **Outputs:** Thumbnail YouTube em alta resolução, Sugestões de título por IA, Sugestões de subtítulo por IA
+- **Limitations:** Título máx 50 chars, subtítulo máx 40 chars
+- **Notes:** 10 ESTILOS com badges de objetivo: (1) Choque & Curiosidade [🔥 Viral] - expressões faciais fortes e texto de impacto, (2) Antes e Depois [📈 Alto CTR] - transformações visuais dramáticas, (3) Número em Destaque [⚡ Popular] - números grandes e chamativos, (4) Face + Emoção [👀 Engajamento] - rostos expressivos com reações, (5) Minimalista Bold [✨ Premium] - design limpo com tipografia forte, (6) Clickbait Profissional [🎯 Conversão] - elementos de urgência e exclusividade, (7) Tutorial/Educativo [📚 Autoridade] - layout organizado e informativo, (8) Gaming/Tech [🎮 Gamer] - visual futurista com efeitos neon, (9) Polêmica/Debate [⚔️ Versus] - estilo VS com cores contrastantes, (10) Urgente/Breaking [🔴 AO VIVO] - estilo notícia com selos de urgência. SUGESTÕES IA: ao descrever 'Saas ImobCreator', IA sugere títulos como 'Faturei 120K com SAAS IMOBILIARIO', 'SAAS: 157 NOVOS INVESTIDORES', 'DE ZERO A 25K/MÊS COM IMOBREATOR' e subtítulos 'LUCRO LÍQUIDO DE 92%', 'O FIM DAS IMOBILIÁRIAS'. Resultado com tipografia multi-cor (branco/dourado/verde) em composição profissional.
 
 ### Gerador de Criativos (Formulário Wizard)
 
@@ -194,18 +206,6 @@
 - **Outputs:** Criativo profissional renderizado e otimizado para conversão
 - **Limitations:** Tempo de geração ~9-15 segundos
 - **Notes:** Pipeline de 5 steps com feedback visual em tempo real. Etapa final é 'Otimizando - Ajustes para máxima conversão' - sugere pós-processamento inteligente. Preview animado do criativo durante geração. Dica exibida: 'Teste diferentes variações para melhores resultados'. Ícone ✨ no preview sugere processamento por IA.
-
-### Criar Thumbnail YouTube
-
-- **Category:** image_generation
-- **Confidence:** 0.9
-- **URL:** https://criadordecriativos.app/app/generate-thumbnail-image
-- **Menu Path:** app > criar-thumbnail
-- **Description:** Ferramenta dedicada para criação de thumbnails otimizadas para vídeos do YouTube. Acessível pelo card 'Criar Thumbnail - Para seus vídeos do YouTube' no dashboard.
-- **Inputs:** Imagem base, Texto/título, Estilo visual
-- **Outputs:** Thumbnail otimizada para YouTube
-- **Limitations:** Detalhes específicos do formulário não visíveis nos screenshots
-- **Notes:** Ícone laranja/vermelho no dashboard. YouTube é o foco principal desta ferramenta.
 
 ### Gerador de Imagens Criativas (WhatsApp/Vendas)
 
