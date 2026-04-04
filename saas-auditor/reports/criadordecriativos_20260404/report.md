@@ -1,7 +1,7 @@
 # SaaS Audit Report: criadordecriativos
 
-**Scan Date:** 2026-04-04T02:01:05.714Z
-**Total Features Found:** 12
+**Scan Date:** 2026-04-04T02:03:50.210Z
+**Total Features Found:** 13
 **Categories:** 7
 
 ## Index
@@ -9,7 +9,7 @@
 - [ai_assistant](#ai_assistant) (3)
 - [automation](#automation) (1)
 - [export](#export) (1)
-- [image_generation](#image_generation) (4)
+- [image_generation](#image_generation) (5)
 - [integration](#integration) (1)
 - [template_gallery](#template_gallery) (1)
 - [video_generation](#video_generation) (1)
@@ -20,9 +20,21 @@
 
 | Name | Confidence | Description | URL |
 |------|-----------|-------------|-----|
+| Assistente IA - Chatbot 'IA Criadora de Anúncios' | 0.99 | Chatbot conversacional completo chamado 'IA Criadora de Anúncios' com status 'Online agora' que guia | [link](https://criadordecriativos.app/app/generate-creatives#assistente-ia) |
 | Dashboard Principal | 0.95 | Painel principal com saudação personalizada ('Olá, Douglas!') e 4 ações rápidas: Criar Criativo, Cri | [link](https://criadordecriativos.app/app) |
-| Assistente IA - Chatbot de Criação de Anúncios | 0.95 | Chatbot conversacional completo chamado 'IA Criador de Anúncios' que guia o usuário passo a passo na | [link](https://criadordecriativos.app/app/generate-creatives#assistente-ia) |
-| Geração Automática de Texto por IA | 0.9 | Funcionalidade de geração automática de texto publicitário baseada no tema/estilo selecionado. Ao es | [link](https://criadordecriativos.app/app/generate-creatives#texto) |
+| Geração Automática de Copy por IA | 0.95 | Motor de geração de texto publicitário que cria copy estruturado (Título, Subtítulo, Preço, CTA) bas | [link](https://criadordecriativos.app/app/generate-creatives#copy-ia) |
+
+### Assistente IA - Chatbot 'IA Criadora de Anúncios'
+
+- **Category:** ai_assistant
+- **Confidence:** 0.99
+- **URL:** https://criadordecriativos.app/app/generate-creatives#assistente-ia
+- **Menu Path:** app > criar-criativo > assistente-ia
+- **Description:** Chatbot conversacional completo chamado 'IA Criadora de Anúncios' com status 'Online agora' que guia o usuário em fluxo de 5 etapas com barra de progresso (20%→60%→80%→100%). Fluxo: (1) Upload de 1-2 fotos ou pular para IA gerar imagem (20%), (2) Seleção de tema via chips interativos - IA Express, IA Mágico, Campanha Branding, Conversão Extrema, CTR Monstro, Produto em Destaque + 'Ver todos os temas (76)' (60%), (3) Descrição do produto/serviço em texto livre, (4) IA gera copy com Título, Subtítulo, Preço e CTA (80%) - ex: 'Fortaleça Vínculos Nesta Páscoa', (5) Usuário aprova, edita ou regenera → Resumo final → Botão 'Gerar Criativo Profissional' (100%).
+- **Inputs:** Fotos do produto/serviço (1-2, JPG/PNG/WEBP), Seleção de tema via chips (76 disponíveis), Descrição textual do produto/serviço, Aprovação/edição/regeneração do copy gerado
+- **Outputs:** Copy publicitário completo (Título + Subtítulo + Preço + CTA), Criativo visual profissional gerado por IA
+- **Limitations:** Fluxo sequencial guiado - 5 etapas obrigatórias
+- **Notes:** Fluxo detalhado: Etapa 1 (20%): 'Envie 1 ou 2 fotos' ou 'pular e deixar a IA criar imagem'. Após upload: 'Imagem recebida! Você pode adicionar mais uma ou continuar' → '+ Adicionar mais uma' / 'Continuar assim'. Etapa 2 (60%): Seleção de tema via chips. IA confirma: 'Ótima escolha! O tema IA Express é perfeito!'. Etapa 3: 'Descreva seu produto ou serviço...' (input de texto). Etapa 4 (80%): IA gera copy estruturado com Título/Subtítulo/Preço/CTA. Pergunta: 'O que você achou?' → 3 opções: 'Gostei do texto, continuar...' / 'Editar manualmente' / 'Criar outra versão'. Etapa 5 (100%): Resumo final formatado com emojis + botão 'Gerar Criativo Profissional'.
 
 ### Dashboard Principal
 
@@ -36,29 +48,17 @@
 - **Limitations:** Sistema baseado em créditos - cada geração consome créditos
 - **Notes:** Sidebar com 8 ícones de navegação: Home, Criar Criativo, Sequências, Vídeo/Animação, Histórico, Recargas, Perfil, Logout. Design moderno com UI limpa e cores azul/roxo.
 
-### Assistente IA - Chatbot de Criação de Anúncios
+### Geração Automática de Copy por IA
 
 - **Category:** ai_assistant
 - **Confidence:** 0.95
-- **URL:** https://criadordecriativos.app/app/generate-creatives#assistente-ia
-- **Menu Path:** app > criar-criativo > assistente-ia
-- **Description:** Chatbot conversacional completo chamado 'IA Criador de Anúncios' que guia o usuário passo a passo na criação de criativos. Interface de chat com barra de progresso (20% ao iniciar). Fluxo: (1) IA se apresenta, (2) pede upload de 1-2 fotos do produto/serviço, (3) opção de pular e deixar a IA criar imagem do zero. Status 'Online agora' indica disponibilidade.
-- **Inputs:** Fotos do produto/serviço (1-2, JPG/PNG/WEBP), Instruções conversacionais em linguagem natural, Opção de pular upload e deixar IA gerar imagem
-- **Outputs:** Criativos publicitários gerados via conversa guiada, Imagens criadas por IA quando sem upload
-- **Limitations:** Fluxo sequencial guiado - requer seguir etapas da IA
-- **Notes:** Interface de chat moderna com ícone de IA (✨). Mensagens: 'Olá! 👋 Eu sou a IA do Criador de Criativos.', 'Vou criar um anúncio profissional para você! ⚡', 'Primeiro, envie 1 ou 2 fotos do seu produto ou serviço para deixar o criativo mais profissional! 📸'. Opção 'Ou pular e deixar a IA criar imagem' sugere capacidade de image generation sem input visual. Barra de progresso indica fluxo multi-etapa.
-
-### Geração Automática de Texto por IA
-
-- **Category:** ai_assistant
-- **Confidence:** 0.9
-- **URL:** https://criadordecriativos.app/app/generate-creatives#texto
-- **Menu Path:** app > criar-criativo > texto-ia
-- **Description:** Funcionalidade de geração automática de texto publicitário baseada no tema/estilo selecionado. Ao escolher um tema (ex: IA Imobiliário), a mensagem 'A IA vai criar o texto do seu anúncio com base no estilo escolhido ✨' confirma que o copy é gerado automaticamente por IA.
-- **Inputs:** Tema/estilo selecionado, Contexto do produto/serviço
-- **Outputs:** Texto publicitário otimizado para o nicho selecionado
-- **Limitations:** Texto gerado depende do tema escolhido
-- **Notes:** Integrado ao fluxo de criação - não é uma ferramenta standalone. A IA adapta o tom e conteúdo do texto ao nicho do tema (ex: imobiliário, vendas, beleza, etc.).
+- **URL:** https://criadordecriativos.app/app/generate-creatives#copy-ia
+- **Menu Path:** app > criar-criativo > assistente-ia > copy
+- **Description:** Motor de geração de texto publicitário que cria copy estruturado (Título, Subtítulo, Preço, CTA) baseado no tema selecionado e descrição do produto. Exemplo gerado: Título 'Fortaleça Vínculos Nesta Páscoa', Subtítulo 'Demonstre gratidão a quem valoriza sua história com mensagens exclusivas', CTA 'Enviar Mensagem Agora'. Oferece 3 opções pós-geração: aprovar, editar manualmente ou regenerar.
+- **Inputs:** Tema/estilo selecionado, Descrição do produto/serviço em linguagem natural
+- **Outputs:** Título publicitário, Subtítulo/descrição, Preço (opcional), Call-to-Action (CTA)
+- **Limitations:** Qualidade depende da descrição fornecida e tema escolhido
+- **Notes:** Copy gerado é editável ('Editar manualmente') e regenerável ('Criar outra versão'). Integrado tanto no Assistente IA quanto no Formulário ('A IA vai criar o texto do seu anúncio com base no estilo escolhido ✨'). CTA é personalizado por contexto.
 
 ---
 
@@ -107,6 +107,7 @@
 | Name | Confidence | Description | URL |
 |------|-----------|-------------|-----|
 | Gerador de Criativos (Formulário Wizard) | 0.98 | Ferramenta principal de criação de criativos publicitários em 2 etapas. Etapa 1 (Foto): seleção de f | [link](https://criadordecriativos.app/app/generate-creatives) |
+| Pipeline de Renderização com Otimização de Conversão | 0.92 | Pipeline de geração de criativos com 5 etapas visuais e otimização automática para conversão. Tela ' | [link](https://criadordecriativos.app/app/generate-creatives#rendering) |
 | Criar Sequência / Carrossel | 0.9 | Ferramenta para criar sequências de imagens em formato carrossel, otimizadas para engajamento em red | [link](https://criadordecriativos.app/app/generate-carousel-images) |
 | Criar Thumbnail YouTube | 0.9 | Ferramenta dedicada para criação de thumbnails otimizadas para vídeos do YouTube. Acessível pelo car | [link](https://criadordecriativos.app/app/generate-thumbnail-image) |
 | Gerador de Imagens Criativas (WhatsApp/Vendas) | 0.75 | Ferramenta para geração de imagens criativas focadas em marketing e vendas, particularmente para Wha | [link](https://criadordecriativos.app/app/generate-creative-images) |
@@ -122,6 +123,18 @@
 - **Outputs:** Criativos publicitários em múltiplos formatos, Imagens otimizadas para redes sociais
 - **Limitations:** Máximo 3 formatos simultâneos, 1 crédito por geração, máx 3 imagens de produto, máx 4 logos
 - **Notes:** Modo Formulário: wizard step-by-step com 2 etapas. Logo pode ser posicionado (Inf. Dir.) com controle de opacidade (15%-100%). Suporta salvar logos para reutilização ('Meus logos salvos'). Ao selecionar tema com IA: 'A IA vai criar o texto do seu anúncio com base no estilo escolhido ✨'. Botão 'Avançar para o texto' leva à etapa 2.
+
+### Pipeline de Renderização com Otimização de Conversão
+
+- **Category:** image_generation
+- **Confidence:** 0.92
+- **URL:** https://criadordecriativos.app/app/generate-creatives#rendering
+- **Menu Path:** app > criar-criativo > gerando
+- **Description:** Pipeline de geração de criativos com 5 etapas visuais e otimização automática para conversão. Tela 'Criando sua arte' mostra: 4 etapas completas (checkmarks verdes) + etapa atual 'Otimizando - Ajustes para máxima conversão' com barra de progresso (68%, ~9s restantes). Preview do criativo sendo gerado aparece em tempo real.
+- **Inputs:** Configurações definidas no fluxo anterior (foto, tema, copy)
+- **Outputs:** Criativo profissional renderizado e otimizado para conversão
+- **Limitations:** Tempo de geração ~9-15 segundos
+- **Notes:** Pipeline de 5 steps com feedback visual em tempo real. Etapa final é 'Otimizando - Ajustes para máxima conversão' - sugere pós-processamento inteligente. Preview animado do criativo durante geração. Dica exibida: 'Teste diferentes variações para melhores resultados'. Ícone ✨ no preview sugere processamento por IA.
 
 ### Criar Sequência / Carrossel
 
